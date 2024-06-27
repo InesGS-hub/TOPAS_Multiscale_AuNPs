@@ -1,0 +1,240 @@
+###########################################################################################################################################
+## STAGE 3: NUCLEAR SCALE SIMULATION CODE 
+## INÊS GOMES DA SILVA, MARCH 2024
+
+#------------------------------------------------------------------------------------------------------------------------------------------------
+#TsNucleus class parameters that can be changed:
+
+#Are not defined in the class: 
+#- NucleusRadius; HilbertCurveLayer; HilbertCurve3DRepeat; HilbertCurveFileName;
+
+#Are defined in the class and can be changed: 
+#- AddHistones; ShowNucleusOutline; FiberRadius; FiberLength; AddBases; AddBackbone; AddHydratationShell; HydratationShellThickness; 
+#DNAModel; RotateNucleusForEachRun;  
+#------------------------------------------------------------------------------------------------------------------------------------------------
+########################################################################################################################
+###REVIEW PARAMETERS GRAPHICS
+##Graphics
+# s:Gr/ViewA/Type             = "OpenGL"
+# i:Gr/ViewA/WindowSizeX      = 900
+# i:Gr/ViewA/WindowSizeY      = 900
+# d:Gr/ViewA/Theta            = 55 deg
+# d:Gr/ViewA/Phi              = 20 deg
+# s:Gr/ViewA/Projection       = "Perspective"
+# d:Gr/ViewA/PerspectiveAngle = 30 deg
+# u:Gr/ViewA/Zoom             = 2
+# b:Ts/UseQT						= "true"
+
+## WORLD
+d:Ge/World/HLX		= 10 um
+d:Ge/World/HLY		= 10 um
+d:Ge/World/HLZ		= 10 um
+s:Ge/World/Material	= "G4_WATER" 
+
+##PHSP POSITION
+s:Ge/PHSPPosition/Parent 	= "World"
+s:Ge/PHSPPosition/Type 		= "Group" 
+d:Ge/PHSPPosition/TransZ = -4.65 um 
+#For phase2_topasnbio_test.txt
+#d:Ge/PHSPPosition/TransZ = -11.0884615384 um #translação de (-9.3*1.1923) μm na direção oposta à translação inicial
+#d:Ge/PHSPPosition/TransX = 0 um
+#d:Ge/PHSPPosition/TransY = 0 um
+
+#For phase2_topasnbiotest.txt
+#d:Ge/PHSPPosition/TransZ =-9.29994 um
+
+# #For phase_2_micro_22.3_22.3.txt
+#d:Ge/PHSPPosition/TransZ = -4.65 um #translação de 4.6488 μm na direção oposta à translação inicial (-3.9*1.1923)
+# d:Ge/PHSPPosition/TransX = 0 um
+# d:Ge/PHSPPosition/TransY = 0 um
+######################################################################################################################## scale factor = 1.1923076923
+## SOURCE
+
+s:So/Well_PHSP/Type										= "PhaseSpace"
+s:So/Well_PHSP/PhaseSpaceFileName						= "/media/mcbeam/HDD/Documents/Ines/saida_PHSP_Nuc_0_6mil/PHSP_Nuc_0_6mil_1" 
+#/media/mcbeam/HDD/Documents/Ines/PHSP_Nuc #/Users/inessilva/PHSP_Nuc
+s:So/Well_PHSP/Component								= "PHSPPosition"
+i:So/Well_PHSP/NumberOfHistoriesInRun             		= 1000 #10⁴ 
+i:So/Well_PHSP/NumberOfHistoriesInRandomJob				= 1
+#b:So/Well_PHSP/PhaseSpaceIncludeEmptyHistories			= "True"
+b:So/Well_PHSP/PhaseSpacePreCheck						= "False" # defaults to true
+#b:So/Well_PHSP/LimitedAssumeEveryParticleIsNewHistory	= "True" #defaults to false
+i:So/Well_PHSP/PhaseSpaceMultipleUse					= 0
+sv:So/Well_PHSP/OnlyIncludeParticlesNamed				= 1 "e-"
+
+u:So/Well_PHSP/PhaseSpaceScaleXPosBy					= 1.1923076923 
+u:So/Well_PHSP/PhaseSpaceScaleYPosBy					= 1.1923076923 
+u:So/Well_PHSP/PhaseSpaceScaleZPosBy					= 1.1923076923
+
+#d:Sc/DNADamageScorer/DosePerExposure							= 0.2 Gy
+#
+#d:Sc/DNADamageScorer/StopTrackingAtDose 						= 1 Gy
+
+
+## GEOMETRIES
+##Nucleus with DNA
+s:Ge/Nucleus/Type                       = "TsNucleus" #TsNucleus or TsSphericalCell
+s:Ge/Nucleus/Parent                     = "World"
+s:Ge/Nucleus/Material                   = "G4_WATER"
+s:Ge/Nucleus/Color                      = "gray"
+d:Ge/Nucleus/NucleusRadius	 			= 4.65 um
+b:Ge/Nucleus/ShowNucleusOutline         = "true"
+
+s:Ge/Nucleus/DNAModel					= "Sphere" #default as Sphere; HalfCylinder or QuarterCylinder
+i:Ge/Nucleus/HilbertCurveLayer          = 4
+i:Ge/Nucleus/HilbertCurve3DRepeat       = 30
+s:Ge/Nucleus/HilbertCurveFileName       = "/home/mcbeam/topas_extensions/topas-nbio/examples/geometry/nucleusModel/supportFiles/HilbertPoints_iteration1.dat"
+
+d:Ge/Nucleus/FiberHalfLength 	= 80.0 nm
+d:Ge/Nucleus/FiberRadius 		= 18.5 nm
+#i:Ge/Nucleus/NumberOfHistonesPerTurn = 6 default
+
+s:Ge/Nucleus/ChromatinFiber/Material    = "G4_WATER"
+s:Ge/Nucleus/Histone/Material           = "G4_HistoneMaterial"
+s:Ge/Nucleus/Base1/Material             = "G4_BaseMaterial"
+s:Ge/Nucleus/Base2/Material             = "G4_BaseMaterial"
+s:Ge/Nucleus/Backbone1/Material         = "G4_BackboneMaterial"
+s:Ge/Nucleus/Backbone2/Material         = "G4_BackboneMaterial"
+s:Ge/Nucleus/HydrationShell1/Material   = "G4_WATER_MODIFIED"
+s:Ge/Nucleus/HydrationShell2/Material   = "G4_WATER_MODIFIED"
+s:Ge/Nucleus/Voxel/Material             = "G4_WATER"
+
+s:Ge/Nucleus/Backbone1/Color="red"
+s:Ge/Nucleus/Backbone1/DrawingStyle="solid"
+s:Ge/Nucleus/Backbone2/Color="blue"
+s:Ge/Nucleus/Backbone2/DrawingStyle="solid"
+
+b:Ge/Nucleus/ShowDNAVoxels              = "false"
+b:Ge/Nucleus/ShowChromatinCylinders     = "false"
+b:Ge/Nucleus/OnlyBuildOneHistone        = "false"
+#b:Ge/Nucleus/HistoneAsScavenger         = "true"
+b:Ge/Nucleus/AddBases                   = "true"
+b:Ge/Nucleus/AddBackbones               = "true"
+b:Ge/Nucleus/AddHydrationShell          = "true"
+
+##MATERIALS
+s:Ma/G4_HistoneMaterial/CloneFromMaterial   = "G4_WATER"
+d:Ma/G4_HistoneMaterial/CloneWithDensity    = 1.407 g/cm3
+
+s:Ma/G4_BaseMaterial/CloneFromMaterial      = "G4_WATER"
+d:Ma/G4_BaseMaterial/CloneWithDensity       = 1.0 g/cm3
+
+s:Ma/G4_BackboneMaterial/CloneFromMaterial  = "G4_WATER"
+d:Ma/G4_BackboneMaterial/CloneWithDensity   = 1.0 g/cm3
+
+s:Ma/G4_WATER_MODIFIED/CloneFromMaterial    = "G4_WATER"
+d:Ma/G4_WATER_MODIFIED/CloneWithDensity     = 1.0 g/cm3
+
+# #DNA Damage Analysis: PHSP
+# s:Sc/DNADamageScorer/Quantity = "simpleSSBandDSB" #"TsScoreSimpleSSBandDSB"
+# s:Sc/DNADamageScorer/Component = "Nucleus"
+# s:Sc/DNADamageScorer/OutputFile									= "DNADamage"
+# s:Sc/DNADamageScorer/OutputType									= "ascii"
+# s:Sc/DNADamageScorer/IfOutputFileAlreadyExists					= "overwrite"
+# d:Sc/DNADamageScorer/EnergyThresholdForHavingSSB				= 11.75 eV    # For half-cylindrical DNA model, the recommended value is 17.5 eV
+# i:Sc/DNADamageScorer/MaximumBasePairDistanceToConsiderDSB		= 10 #Default
+
+##SCORE
+
+# Setting up the output
+b:Sc/DNADamageScorer/PropagateToChildren						= "true"
+s:Sc/DNADamageScorer/OutputFile									= "DNADamage"
+s:Sc/DNADamageScorer/OutputType									= "ascii"
+s:Sc/DNADamageScorer/IfOutputFileAlreadyExists					= "overwrite"
+
+# Options for direct damage (recommended values for spherical DNA model)
+d:Sc/DNADamageScorer/DirectDamageThreshold						= 11.75 eV    # For half-cylindrical DNA model, the recommended value is 17.5 eV
+b:Sc/DNADamageScorer/UseLinearProbabilityForDirectDamage		= "false"
+
+# Options for quasi-direct damage
+u:Sc/DNADamageScorer/ProbabilityOfChargeTransferFromHydrationShellToBackbone = 0.33333
+
+# Options for indirect damage (recommended values for spherical DNA model)
+b:Sc/DNADamageScorer/AlwaysScavengeSpeciesInDNAComponents		= "false"
+u:Sc/DNADamageScorer/ProbabilityOfScavengingInBackbone			= 0.25		  # For half-cylindrical DNA model, the recommended value is 0.0585
+u:Sc/DNADamageScorer/ProbabilityOfScavengingInBase				= 1.0
+u:Sc/DNADamageScorer/ProbabilityOfIndirectDamageToBackbone		= 0.55		  # If always scavenging in DNA compoennts, the recommended value is 0.4
+u:Sc/DNADamageScorer/ProbabilityOfIndirectDamageToBase			= 1.0		  # If always scavenging in DNA compoennts, the recommended value is 0.4
+b:Sc/DNADamageScorer/ScavengeInHistones							= "true"
+
+# Options for damage classification
+i:Sc/DNADamageScorer/MaximumBasePairDistanceToConsiderDSB		= 10
+b:Sc/DNADamageScorer/ExcludeShortFragments						= "false"
+
+# # Options for foci scoring
+# b:Sc/DNADamageScorer/ScoreNumberOfFoci							= "true"
+# dv:Sc/DNADamageScorer/FociSizes									= 2 150 500 nm # Maximum of 5 sizes
+# b:Sc/DNADamageScorer/Get3DFociImage								= "true"
+# b:Sc/DNADamageScorer/Get2DFociImages							= "true"
+# sv:Sc/DNADamageScorer/2DFociImagePlanes							= 3 "X" "Y" "Z"
+# s:Sc/DNADamageScorer/MicroscopePSFShape							= "Gaussian"
+# d:Sc/DNADamageScorer/MicroscopePSFWidth							= 400 nm
+# dv:Sc/DNADamageScorer/Foci2DImageResolutions					= 2 25 100 nm
+# d:Sc/DNADamageScorer/Foci3DImageResolution						= 400 nm
+
+# Options for output extension
+b:Sc/DNADamageScorer/WriteCSVOutputWithAllDamageSpecification	= "true"
+b:Sc/DNADamageScorer/ScoreDirectDamage							= "true"
+b:Sc/DNADamageScorer/ScoreIndirectDamage						= "true"
+b:Sc/DNADamageScorer/ScoreQuasiDirectDamage						= "true"
+b:Sc/DNADamageScorer/ScoreBaseDamages							= "true"
+b:Sc/DNADamageScorer/ScoreBackboneDamages						= "true"
+b:Sc/DNADamageScorer/BreakDownOutputPerDamageOrigin				= "true"
+
+# Options for SDD output specification
+
+b:Sc/DNADamageScorer/IncludeDSBDamageSitesOnlyInSDD				= "false"
+b:Sc/DNADamageScorer/WriteMinimalSDDOutput						= "false"
+
+# Data for SDD header
+s:Sc/DNADamageScorer/AuthorName							   		= "InesGomesdaSilva"
+s:Sc/DNADamageScorer/SimulationDetails					   		= "Nucleus simulation 6mil nanos" 
+s:Sc/DNADamageScorer/SourceDetails					   	   		= "PHSP source"
+i:Sc/DNADamageScorer/SourceType					   		   		= 1
+s:Sc/DNADamageScorer/EnergyDistribution					   		= "M, 0"
+s:Sc/DNADamageScorer/IrradiationTarget					   		= "Nucleus"
+s:Sc/DNADamageScorer/CellCycleStage					       		= "0"
+s:Sc/DNADamageScorer/DNAStructure					           	= "0, 1"
+i:Sc/DNADamageScorer/InVitroOrInVivo						   	= 0
+s:Sc/DNADamageScorer/ProliferationStatus					   	= "1"
+
+s:Sc/DNADamageScorer/Quantity				= "DNADamageNucleusStepByStep"
+s:Sc/DNADamageScorer/Component 				= "Nucleus"
+i:Sc/DNADamageScorer/NumberOfHistoriesInRun = 1 #So/Well_PHSP/NumberOfHistoriesInRun 
+d:Sc/DNADamageScorer/ScoringRadius			= Ge/Nucleus/NucleusRadius um
+i:Sc/DNADamageScorer/BasePairPositionAtGeometricHierarchy = 0
+sv:Sc/DNADamageScorer/Strand1MaterialNames  = 4 "G4_WATER_MODIFIED" "G4_BackboneMaterial" "G4_BaseMaterial" "G4_HistoneMaterial"
+sv:Sc/DNADamageScorer/Strand2MaterialNames  = 3 "G4_WATER_MODIFIED" "G4_BackboneMaterial" "G4_BaseMaterial"
+
+#d:Sc/DNADamageScorer/ImageXMinPosition		= 0 um - Ge/Nucleus/NucleusRadius
+#d:Sc/DNADamageScorer/ImageXMaxPosition		= Ge/Nucleus/NucleusRadius um
+#d:Sc/DNADamageScorer/ImageYMinPosition		= 0 um - Ge/Nucleus/NucleusRadius
+#d:Sc/DNADamageScorer/ImageYMaxPosition		= Ge/Nucleus/NucleusRadius um
+#d:Sc/DNADamageScorer/ImageZMinPosition		= 0 um - Ge/Nucleus/NucleusRadius
+#d:Sc/DNADamageScorer/ImageZMaxPosition		= Ge/Nucleus/NucleusRadius um
+
+
+# #Geometry file for Nucleus scorer
+s:Sc/DNADamageScorer/GeometryInfo			= "Geoinfo.txt"
+s:Sc/DNADamageScorer/FileVoxelCopyNumbersInsideNucleus = "CopyNoTable.txt"
+s:Sc/DNADamageScorer/MapChromosomeVoxelsFile = "signedCHVoxel.txt"
+
+##PHYSICS AND CHEMISTRY
+sv:Ph/Default/Modules								= 2 "TsEmDNAPhysics" "TsEmDNAChemistry" 	# OR	 physics and chemistry
+includeFile											= /home/mcbeam/topas_extensions/topas-nbio/examples/geometry/nucleusModel/supportFiles/TOPASDefaultReactions.txt
+s:Ch/ChemistryName									= "TOPASChemistry"
+b:Ch/TOPASChemistry/ChemicalStageTransportActive    = "true"
+d:Ch/TOPASChemistry/ChemicalStageTimeEnd =  1 ns
+d:Ch/TOPASChemistry/Reaction/Hydronium/Hydroxide/ReactionRate               = 11.031e10 /M/s
+
+## TOPAS PARAMETERS
+i:Ts/ShowHistoryCountAtInterval = 1
+i:Ts/NumberOfThreads			= -3
+b:Ts/PauseBeforeQuit			= "true"
+i:Ts/Seed 						= 1
+i:Ts/ChemistryVerbosity = 1
+
+
+
+
+

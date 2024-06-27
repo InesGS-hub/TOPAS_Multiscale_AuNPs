@@ -1,0 +1,662 @@
+####################################################
+# PLATE 24
+# Well with 4x6 
+
+#Inês Gomes da Silva
+# March 2024
+####################################################
+
+# Culture plate
+s:Ge/Plate/Parent		= "World"
+s:Ge/Plate/Type			= "TsBox"
+d:Ge/Plate/HLX			= 6.325 cm # Width
+d:Ge/Plate/HLY			= 4.25 cm
+d:Ge/Plate/HLZ			= 1.1 cm
+d:Ge/Plate/TransX		= 0.0 cm # defaults to 0
+d:Ge/Plate/TransY		= 0.0 cm # defaults to 0
+d:Ge/Plate/TransZ		= 0.85 cm # defaults to 0
+d:Ge/Plate/RotX			= 0.0 deg # defaults to 0
+d:Ge/Plate/RotY			= 0.0 deg # defaults to 0
+d:Ge/Plate/RotZ			= 0.0 deg # defaults to 0
+s:Ge/Plate/Material		= "Air"
+
+# Lower layer of polystyrene
+s:Ge/LoPo/Parent		= "Plate"
+s:Ge/LoPo/Type			= "TsBox"
+d:Ge/LoPo/HLX			= 6.325 cm # Width
+d:Ge/LoPo/HLY			= 4.25 cm
+d:Ge/LoPo/HLZ			= 0.1 cm
+d:Ge/LoPo/TransX		= 0.0 cm # defaults to 0
+d:Ge/LoPo/TransY		= 0.0 cm # defaults to 0
+d:Ge/LoPo/TransZ		= -0.9 cm # defaults to 0
+d:Ge/LoPo/RotX			= 0.0 deg # defaults to 0
+d:Ge/LoPo/RotY			= 0.0 deg # defaults to 0
+d:Ge/LoPo/RotZ			= 0.0 deg # defaults to 0
+s:Ge/LoPo/Material		= "G4_POLYSTYRENE"
+
+# Upper layer of polystyrene
+s:Ge/UpPo/Parent		= "Plate"
+s:Ge/UpPo/Type			= "TsBox"
+d:Ge/UpPo/HLX			= 6.325 cm # Width
+d:Ge/UpPo/HLY			= 4.25 cm
+d:Ge/UpPo/HLZ			= 0.1 cm
+d:Ge/UpPo/TransX		= 0.0 cm # defaults to 0
+d:Ge/UpPo/TransY		= 0.0 cm # defaults to 0
+d:Ge/UpPo/TransZ		= 1.0 cm # defaults to 0
+d:Ge/UpPo/RotX			= 0.0 deg # defaults to 0
+d:Ge/UpPo/RotY			= 0.0 deg # defaults to 0
+d:Ge/UpPo/RotZ			= 0.0 deg # defaults to 0
+s:Ge/UpPo/Material		= "G4_POLYSTYRENE"
+
+# A1 cylinder of polystyrene
+s:Ge/A1CylinderP/Parent		= "Plate"
+s:Ge/A1CylinderP/Type		= "TsCylinder"
+d:Ge/A1CylinderP/TransX		= -4.75 cm
+d:Ge/A1CylinderP/TransY		= 2.85 cm
+d:Ge/A1CylinderP/TransZ		= 0.05 cm
+d:Ge/A1CylinderP/RMax		= 0.88 cm
+d:Ge/A1CylinderP/HL			= 0.85 cm
+s:Ge/A1CylinderP/Material	= "G4_POLYSTYRENE"
+
+# A1 cylinder of air
+s:Ge/A1CylinderA/Parent		= "A1CylinderP"
+s:Ge/A1CylinderA/Type		= "TsCylinder"
+d:Ge/A1CylinderA/RMax		= 0.78 cm
+d:Ge/A1CylinderA/HL			= 0.85 cm
+s:Ge/A1CylinderA/Material	= "Air"
+
+# A2 cylinder of polystyrene
+s:Ge/A2CylinderP/Parent		= "Plate"
+s:Ge/A2CylinderP/Type		= "TsCylinder"
+d:Ge/A2CylinderP/TransX		= -2.85 cm
+d:Ge/A2CylinderP/TransY		= 2.85 cm
+d:Ge/A2CylinderP/TransZ		= 0.05 cm
+d:Ge/A2CylinderP/RMax		= 0.88 cm
+d:Ge/A2CylinderP/HL			= 0.85 cm
+s:Ge/A2CylinderP/Material	= "G4_POLYSTYRENE"
+
+# A2 cylinder of air
+s:Ge/A2CylinderA/Parent		= "A2CylinderP"
+s:Ge/A2CylinderA/Type		= "TsCylinder"
+d:Ge/A2CylinderA/RMax		= 0.78 cm
+d:Ge/A2CylinderA/HL			= 0.85 cm
+s:Ge/A2CylinderA/Material	= "Air"
+
+# A3 cylinder of polystyrene
+s:Ge/A3CylinderP/Parent		= "Plate"
+s:Ge/A3CylinderP/Type		= "TsCylinder"
+d:Ge/A3CylinderP/TransX		= -0.95 cm
+d:Ge/A3CylinderP/TransY		= 2.85 cm
+d:Ge/A3CylinderP/TransZ		= 0.05 cm
+d:Ge/A3CylinderP/RMax		= 0.88 cm
+d:Ge/A3CylinderP/HL			= 0.85 cm
+s:Ge/A3CylinderP/Material	= "G4_POLYSTYRENE"
+
+# A3 cylinder of air
+s:Ge/A3CylinderA/Parent		= "A3CylinderP"
+s:Ge/A3CylinderA/Type		= "TsCylinder"
+d:Ge/A3CylinderA/RMax		= 0.78 cm
+d:Ge/A3CylinderA/HL			= 0.85 cm
+s:Ge/A3CylinderA/Material	= "Air"
+
+# A4 cylinder of polystyrene
+s:Ge/A4CylinderP/Parent		= "Plate"
+s:Ge/A4CylinderP/Type		= "TsCylinder"
+d:Ge/A4CylinderP/TransX		= 0.95 cm
+d:Ge/A4CylinderP/TransY		= 2.85 cm
+d:Ge/A4CylinderP/TransZ		= 0.05 cm
+d:Ge/A4CylinderP/RMax		= 0.88 cm
+d:Ge/A4CylinderP/HL			= 0.85 cm
+s:Ge/A4CylinderP/Material	= "G4_POLYSTYRENE"
+
+# A4 cylinder of air
+s:Ge/A4CylinderA/Parent		= "A4CylinderP"
+s:Ge/A4CylinderA/Type		= "TsCylinder"
+d:Ge/A4CylinderA/RMax		= 0.78 cm
+d:Ge/A4CylinderA/HL			= 0.85 cm
+s:Ge/A4CylinderA/Material	= "Air"
+
+# A5 cylinder of polystyrene
+s:Ge/A5CylinderP/Parent		= "Plate"
+s:Ge/A5CylinderP/Type		= "TsCylinder"
+d:Ge/A5CylinderP/TransX		= 2.85 cm
+d:Ge/A5CylinderP/TransY		= 2.85 cm
+d:Ge/A5CylinderP/TransZ		= 0.05 cm
+d:Ge/A5CylinderP/RMax		= 0.88 cm
+d:Ge/A5CylinderP/HL			= 0.85 cm
+s:Ge/A5CylinderP/Material	= "G4_POLYSTYRENE"
+
+# A5 cylinder of air
+s:Ge/A5CylinderA/Parent		= "A5CylinderP"
+s:Ge/A5CylinderA/Type		= "TsCylinder"
+d:Ge/A5CylinderA/RMax		= 0.78 cm
+d:Ge/A5CylinderA/HL			= 0.85 cm
+s:Ge/A5CylinderA/Material	= "Air"
+
+# A6 cylinder of polystyrene
+s:Ge/A6CylinderP/Parent		= "Plate"
+s:Ge/A6CylinderP/Type		= "TsCylinder"
+d:Ge/A6CylinderP/TransX		= 4.75 cm
+d:Ge/A6CylinderP/TransY		= 2.85 cm
+d:Ge/A6CylinderP/TransZ		= 0.05 cm
+d:Ge/A6CylinderP/RMax		= 0.88 cm
+d:Ge/A6CylinderP/HL			= 0.85 cm
+s:Ge/A6CylinderP/Material	= "G4_POLYSTYRENE"
+
+# A6 cylinder of air
+s:Ge/A6CylinderA/Parent		= "A6CylinderP"
+s:Ge/A6CylinderA/Type		= "TsCylinder"
+d:Ge/A6CylinderA/RMax		= 0.78 cm
+d:Ge/A6CylinderA/HL			= 0.85 cm
+s:Ge/A6CylinderA/Material	= "Air"
+
+# B1 cylinder of polystyrene
+s:Ge/B1CylinderP/Parent		= "Plate"
+s:Ge/B1CylinderP/Type		= "TsCylinder"
+d:Ge/B1CylinderP/TransX		= -4.75 cm
+d:Ge/B1CylinderP/TransY		= 0.95 cm
+d:Ge/B1CylinderP/TransZ		= 0.05 cm
+d:Ge/B1CylinderP/RMax		= 0.88 cm
+d:Ge/B1CylinderP/HL			= 0.85 cm
+s:Ge/B1CylinderP/Material	= "G4_POLYSTYRENE"
+
+# B1 cylinder of air
+s:Ge/B1CylinderA/Parent		= "B1CylinderP"
+s:Ge/B1CylinderA/Type		= "TsCylinder"
+d:Ge/B1CylinderA/RMax		= 0.78 cm
+d:Ge/B1CylinderA/HL			= 0.85 cm
+s:Ge/B1CylinderA/Material	= "Air"
+
+# B2 cylinder of polystyrene
+s:Ge/B2CylinderP/Parent		= "Plate"
+s:Ge/B2CylinderP/Type		= "TsCylinder"
+d:Ge/B2CylinderP/TransX		= -2.85 cm
+d:Ge/B2CylinderP/TransY		= 0.95 cm
+d:Ge/B2CylinderP/TransZ		= 0.05 cm
+d:Ge/B2CylinderP/RMax		= 0.88 cm
+d:Ge/B2CylinderP/HL			= 0.85 cm
+s:Ge/B2CylinderP/Material	= "G4_POLYSTYRENE"
+
+# B2 cylinder of air
+s:Ge/B2CylinderA/Parent		= "B2CylinderP"
+s:Ge/B2CylinderA/Type		= "TsCylinder"
+d:Ge/B2CylinderA/RMax		= 0.78 cm
+d:Ge/B2CylinderA/HL			= 0.85 cm
+s:Ge/B2CylinderA/Material	= "Air"
+
+# B3 cylinder of polystyrene
+s:Ge/B3CylinderP/Parent		= "Plate"
+s:Ge/B3CylinderP/Type		= "TsCylinder"
+d:Ge/B3CylinderP/TransX		= -0.95 cm
+d:Ge/B3CylinderP/TransY		= 0.95 cm
+d:Ge/B3CylinderP/TransZ		= 0.05 cm
+d:Ge/B3CylinderP/RMax		= 0.88 cm
+d:Ge/B3CylinderP/HL			= 0.85 cm
+s:Ge/B3CylinderP/Material	= "G4_POLYSTYRENE"
+
+# B3 cylinder of air
+s:Ge/B3CylinderA/Parent		= "B3CylinderP"
+s:Ge/B3CylinderA/Type		= "TsCylinder"
+d:Ge/B3CylinderA/RMax		= 0.78 cm
+d:Ge/B3CylinderA/HL			= 0.85 cm
+s:Ge/B3CylinderA/Material	= "Air"
+
+# B4 cylinder of polystyrene
+s:Ge/B4CylinderP/Parent		= "Plate"
+s:Ge/B4CylinderP/Type		= "TsCylinder"
+d:Ge/B4CylinderP/TransX		= 0.95 cm
+d:Ge/B4CylinderP/TransY		= 0.95 cm
+d:Ge/B4CylinderP/TransZ		= 0.05 cm
+d:Ge/B4CylinderP/RMax		= 0.88 cm
+d:Ge/B4CylinderP/HL			= 0.85 cm
+s:Ge/B4CylinderP/Material	= "G4_POLYSTYRENE"
+
+# B4 cylinder of air
+s:Ge/B4CylinderA/Parent		= "B4CylinderP"
+s:Ge/B4CylinderA/Type		= "TsCylinder"
+d:Ge/B4CylinderA/RMax		= 0.78 cm
+d:Ge/B4CylinderA/HL			= 0.85 cm
+s:Ge/B4CylinderA/Material	= "Air"
+
+# B5 cylinder of polystyrene
+s:Ge/B5CylinderP/Parent		= "Plate"
+s:Ge/B5CylinderP/Type		= "TsCylinder"
+d:Ge/B5CylinderP/TransX		= 2.85 cm
+d:Ge/B5CylinderP/TransY		= 0.95 cm
+d:Ge/B5CylinderP/TransZ		= 0.05 cm
+d:Ge/B5CylinderP/RMax		= 0.88 cm
+d:Ge/B5CylinderP/HL			= 0.85 cm
+s:Ge/B5CylinderP/Material	= "G4_POLYSTYRENE"
+
+# B5 cylinder of air
+s:Ge/B5CylinderA/Parent		= "B5CylinderP"
+s:Ge/B5CylinderA/Type		= "TsCylinder"
+d:Ge/B5CylinderA/RMax		= 0.78 cm
+d:Ge/B5CylinderA/HL			= 0.85 cm
+s:Ge/B5CylinderA/Material	= "Air"
+
+# B6 cylinder of polystyrene
+s:Ge/B6CylinderP/Parent		= "Plate"
+s:Ge/B6CylinderP/Type		= "TsCylinder"
+d:Ge/B6CylinderP/TransX		= 4.75 cm
+d:Ge/B6CylinderP/TransY		= 0.95 cm
+d:Ge/B6CylinderP/TransZ		= 0.05 cm
+d:Ge/B6CylinderP/RMax		= 0.88 cm
+d:Ge/B6CylinderP/HL			= 0.85 cm
+s:Ge/B6CylinderP/Material	= "G4_POLYSTYRENE"
+
+# B6 cylinder of air
+s:Ge/B6CylinderA/Parent		= "B6CylinderP"
+s:Ge/B6CylinderA/Type		= "TsCylinder"
+d:Ge/B6CylinderA/RMax		= 0.78 cm
+d:Ge/B6CylinderA/HL			= 0.85 cm
+s:Ge/B6CylinderA/Material	= "Air"
+
+# C1 cylinder of polystyrene
+s:Ge/C1CylinderP/Parent		= "Plate"
+s:Ge/C1CylinderP/Type		= "TsCylinder"
+d:Ge/C1CylinderP/TransX		= -4.75 cm
+d:Ge/C1CylinderP/TransY		= -0.95 cm
+d:Ge/C1CylinderP/TransZ		= 0.05 cm
+d:Ge/C1CylinderP/RMax		= 0.88 cm
+d:Ge/C1CylinderP/HL			= 0.85 cm
+s:Ge/C1CylinderP/Material	= "G4_POLYSTYRENE"
+
+# C1 cylinder of air
+s:Ge/C1CylinderA/Parent		= "C1CylinderP"
+s:Ge/C1CylinderA/Type		= "TsCylinder"
+d:Ge/C1CylinderA/RMax		= 0.78 cm
+d:Ge/C1CylinderA/HL			= 0.85 cm
+s:Ge/C1CylinderA/Material	= "Air"
+
+# C2 cylinder of polystyrene
+s:Ge/C2CylinderP/Parent		= "Plate"
+s:Ge/C2CylinderP/Type		= "TsCylinder"
+d:Ge/C2CylinderP/TransX		= -2.85 cm
+d:Ge/C2CylinderP/TransY		= -0.95 cm
+d:Ge/C2CylinderP/TransZ		= 0.05 cm
+d:Ge/C2CylinderP/RMax		= 0.88 cm
+d:Ge/C2CylinderP/HL			= 0.85 cm
+s:Ge/C2CylinderP/Material	= "G4_POLYSTYRENE"
+
+# C2 cylinder of air
+s:Ge/C2CylinderA/Parent		= "C2CylinderP"
+s:Ge/C2CylinderA/Type		= "TsCylinder"
+d:Ge/C2CylinderA/RMax		= 0.78 cm
+d:Ge/C2CylinderA/HL			= 0.85 cm
+s:Ge/C2CylinderA/Material	= "Air"
+
+# C3 cylinder of polystyrene
+s:Ge/C3CylinderP/Parent		= "Plate"
+s:Ge/C3CylinderP/Type		= "TsCylinder"
+d:Ge/C3CylinderP/TransX		= -0.95 cm
+d:Ge/C3CylinderP/TransY		= -0.95 cm
+d:Ge/C3CylinderP/TransZ		= 0.05 cm
+d:Ge/C3CylinderP/RMax		= 0.88 cm
+d:Ge/C3CylinderP/HL			= 0.85 cm
+s:Ge/C3CylinderP/Material	= "G4_POLYSTYRENE"
+
+# C3 cylinder of air
+s:Ge/C3CylinderA/Parent		= "C3CylinderP"
+s:Ge/C3CylinderA/Type		= "TsCylinder"
+d:Ge/C3CylinderA/RMax		= 0.78 cm
+d:Ge/C3CylinderA/HL			= 0.85 cm
+s:Ge/C3CylinderA/Material	= "Air"
+
+# C4 cylinder of polystyrene
+s:Ge/C4CylinderP/Parent		= "Plate"
+s:Ge/C4CylinderP/Type		= "TsCylinder"
+d:Ge/C4CylinderP/TransX		= 0.95 cm
+d:Ge/C4CylinderP/TransY		= -0.95 cm
+d:Ge/C4CylinderP/TransZ		= 0.05 cm
+d:Ge/C4CylinderP/RMax		= 0.88 cm
+d:Ge/C4CylinderP/HL			= 0.85 cm
+s:Ge/C4CylinderP/Material	= "G4_POLYSTYRENE"
+
+# C4 cylinder of air
+s:Ge/C4CylinderA/Parent		= "C4CylinderP"
+s:Ge/C4CylinderA/Type		= "TsCylinder"
+d:Ge/C4CylinderA/RMax		= 0.78 cm
+d:Ge/C4CylinderA/HL			= 0.85 cm
+s:Ge/C4CylinderA/Material	= "Air"
+
+# C5 cylinder of polystyrene
+s:Ge/C5CylinderP/Parent		= "Plate"
+s:Ge/C5CylinderP/Type		= "TsCylinder"
+d:Ge/C5CylinderP/TransX		= 2.85 cm
+d:Ge/C5CylinderP/TransY		= -0.95 cm
+d:Ge/C5CylinderP/TransZ		= 0.05 cm
+d:Ge/C5CylinderP/RMax		= 0.88 cm
+d:Ge/C5CylinderP/HL			= 0.85 cm
+s:Ge/C5CylinderP/Material	= "G4_POLYSTYRENE"
+
+# C5 cylinder of air
+s:Ge/C5CylinderA/Parent		= "C5CylinderP"
+s:Ge/C5CylinderA/Type		= "TsCylinder"
+d:Ge/C5CylinderA/RMax		= 0.78 cm
+d:Ge/C5CylinderA/HL			= 0.85 cm
+s:Ge/C5CylinderA/Material	= "Air"
+
+# C6 cylinder of polystyrene
+s:Ge/C6CylinderP/Parent		= "Plate"
+s:Ge/C6CylinderP/Type		= "TsCylinder"
+d:Ge/C6CylinderP/TransX		= 4.75 cm
+d:Ge/C6CylinderP/TransY		= -0.95 cm
+d:Ge/C6CylinderP/TransZ		= 0.05 cm
+d:Ge/C6CylinderP/RMax		= 0.88 cm
+d:Ge/C6CylinderP/HL			= 0.85 cm
+s:Ge/C6CylinderP/Material	= "G4_POLYSTYRENE"
+
+# C6 cylinder of air
+s:Ge/C6CylinderA/Parent		= "C6CylinderP"
+s:Ge/C6CylinderA/Type		= "TsCylinder"
+d:Ge/C6CylinderA/RMax		= 0.78 cm
+d:Ge/C6CylinderA/HL			= 0.85 cm
+s:Ge/C6CylinderA/Material	= "Air"
+
+# D1 cylinder of polystyrene
+s:Ge/D1CylinderP/Parent		= "Plate"
+s:Ge/D1CylinderP/Type		= "TsCylinder"
+d:Ge/D1CylinderP/TransX		= -4.75 cm
+d:Ge/D1CylinderP/TransY		= -2.85 cm
+d:Ge/D1CylinderP/TransZ		= 0.05 cm
+d:Ge/D1CylinderP/RMax		= 0.88 cm
+d:Ge/D1CylinderP/HL			= 0.85 cm
+s:Ge/D1CylinderP/Material	= "G4_POLYSTYRENE"
+
+# D1 cylinder of air
+s:Ge/D1CylinderA/Parent		= "D1CylinderP"
+s:Ge/D1CylinderA/Type		= "TsCylinder"
+d:Ge/D1CylinderA/RMax		= 0.78 cm
+d:Ge/D1CylinderA/HL			= 0.85 cm
+s:Ge/D1CylinderA/Material	= "Air"
+
+# D2 cylinder of polystyrene
+s:Ge/D2CylinderP/Parent		= "Plate"
+s:Ge/D2CylinderP/Type		= "TsCylinder"
+d:Ge/D2CylinderP/TransX		= -2.85 cm
+d:Ge/D2CylinderP/TransY		= -2.85 cm
+d:Ge/D2CylinderP/TransZ		= 0.05 cm
+d:Ge/D2CylinderP/RMax		= 0.88 cm
+d:Ge/D2CylinderP/HL			= 0.85 cm
+s:Ge/D2CylinderP/Material	= "G4_POLYSTYRENE"
+
+# D2 cylinder of air
+s:Ge/D2CylinderA/Parent		= "D2CylinderP"
+s:Ge/D2CylinderA/Type		= "TsCylinder"
+d:Ge/D2CylinderA/RMax		= 0.78 cm
+d:Ge/D2CylinderA/HL			= 0.85 cm
+s:Ge/D2CylinderA/Material	= "Air"
+
+# D3 cylinder of polystyrene
+s:Ge/D3CylinderP/Parent		= "Plate"
+s:Ge/D3CylinderP/Type		= "TsCylinder"
+d:Ge/D3CylinderP/TransX		= -0.95 cm
+d:Ge/D3CylinderP/TransY		= -2.85 cm
+d:Ge/D3CylinderP/TransZ		= 0.05 cm
+d:Ge/D3CylinderP/RMax		= 0.88 cm
+d:Ge/D3CylinderP/HL			= 0.85 cm
+s:Ge/D3CylinderP/Material	= "G4_POLYSTYRENE"
+
+# D3 cylinder of air
+s:Ge/D3CylinderA/Parent		= "D3CylinderP"
+s:Ge/D3CylinderA/Type		= "TsCylinder"
+d:Ge/D3CylinderA/RMax		= 0.78 cm
+d:Ge/D3CylinderA/HL			= 0.85 cm
+s:Ge/D3CylinderA/Material	= "Air"
+
+# D4 cylinder of polystyrene
+s:Ge/D4CylinderP/Parent		= "Plate"
+s:Ge/D4CylinderP/Type		= "TsCylinder"
+d:Ge/D4CylinderP/TransX		= 0.95 cm
+d:Ge/D4CylinderP/TransY		= -2.85 cm
+d:Ge/D4CylinderP/TransZ		= 0.05 cm
+d:Ge/D4CylinderP/RMax		= 0.88 cm
+d:Ge/D4CylinderP/HL			= 0.85 cm
+s:Ge/D4CylinderP/Material	= "G4_POLYSTYRENE"
+
+# D4 cylinder of air
+s:Ge/D4CylinderA/Parent		= "D4CylinderP"
+s:Ge/D4CylinderA/Type		= "TsCylinder"
+d:Ge/D4CylinderA/RMax		= 0.78 cm
+d:Ge/D4CylinderA/HL			= 0.85 cm
+s:Ge/D4CylinderA/Material	= "Air"
+
+# D5 cylinder of polystyrene
+s:Ge/D5CylinderP/Parent		= "Plate"
+s:Ge/D5CylinderP/Type		= "TsCylinder"
+d:Ge/D5CylinderP/TransX		= 2.85 cm
+d:Ge/D5CylinderP/TransY		= -2.85 cm
+d:Ge/D5CylinderP/TransZ		= 0.05 cm
+d:Ge/D5CylinderP/RMax		= 0.88 cm
+d:Ge/D5CylinderP/HL			= 0.85 cm
+s:Ge/D5CylinderP/Material	= "G4_POLYSTYRENE"
+
+# D5 cylinder of air
+s:Ge/D5CylinderA/Parent		= "D5CylinderP"
+s:Ge/D5CylinderA/Type		= "TsCylinder"
+d:Ge/D5CylinderA/RMax		= 0.78 cm
+d:Ge/D5CylinderA/HL			= 0.85 cm
+s:Ge/D5CylinderA/Material	= "Air"
+
+# D6 cylinder of polystyrene
+s:Ge/D6CylinderP/Parent		= "Plate"
+s:Ge/D6CylinderP/Type		= "TsCylinder"
+d:Ge/D6CylinderP/TransX		= 4.75 cm
+d:Ge/D6CylinderP/TransY		= -2.85 cm
+d:Ge/D6CylinderP/TransZ		= 0.05 cm
+d:Ge/D6CylinderP/RMax		= 0.88 cm
+d:Ge/D6CylinderP/HL			= 0.85 cm
+s:Ge/D6CylinderP/Material	= "G4_POLYSTYRENE"
+
+# D6 cylinder of air
+s:Ge/D6CylinderA/Parent		= "D6CylinderP"
+s:Ge/D6CylinderA/Type		= "TsCylinder"
+d:Ge/D6CylinderA/RMax		= 0.78 cm
+d:Ge/D6CylinderA/HL			= 0.85 cm
+s:Ge/D6CylinderA/Material	= "Air"
+
+
+#### CONTENT
+# A1 content
+s:Ge/A1Content/Parent	= "A1CylinderA"
+s:Ge/A1Content/Type		= "TsCylinder"
+d:Ge/A1Content/TransZ	= Ge/A1Content/HL - Ge/A1CylinderA/HL cm
+d:Ge/A1Content/RMax		= 0.78 cm
+d:Ge/A1Content/HL		= 0.2591 cm
+s:Ge/A1Content/Material	= "Air"
+
+# A2 content
+s:Ge/A2Content/Parent	= "A2CylinderA"
+s:Ge/A2Content/Type		= "TsCylinder"
+d:Ge/A2Content/TransZ	= Ge/A2Content/HL - Ge/A2CylinderA/HL cm
+d:Ge/A2Content/RMax		= 0.78 cm
+d:Ge/A2Content/HL		= 0.2591 cm
+s:Ge/A2Content/Material	= "Air"
+
+# A3 content
+s:Ge/A3Content/Parent	= "A3CylinderA"
+s:Ge/A3Content/Type		= "TsCylinder"
+d:Ge/A3Content/TransZ	= Ge/A3Content/HL - Ge/A3CylinderA/HL cm
+d:Ge/A3Content/RMax		= 0.78 cm
+d:Ge/A3Content/HL		= 0.2591 cm
+s:Ge/A3Content/Material	= "Air"
+
+# A4 content
+s:Ge/A4Content/Parent	= "A4CylinderA"
+s:Ge/A4Content/Type		= "TsCylinder"
+d:Ge/A4Content/TransZ	= Ge/A4Content/HL - Ge/A4CylinderA/HL cm
+d:Ge/A4Content/RMax		= 0.78 cm
+d:Ge/A4Content/HL		= 0.2591 cm
+s:Ge/A4Content/Material	= "Air"
+
+# A5 content
+s:Ge/A5Content/Parent	= "A5CylinderA"
+s:Ge/A5Content/Type		= "TsCylinder"
+d:Ge/A5Content/TransZ	= Ge/A5Content/HL - Ge/A5CylinderA/HL cm
+d:Ge/A5Content/RMax		= 0.78 cm
+d:Ge/A5Content/HL		= 0.2591 cm
+s:Ge/A5Content/Material	= "Air"
+
+# A6 content
+s:Ge/A6Content/Parent	= "A6CylinderA"
+s:Ge/A6Content/Type		= "TsCylinder"
+d:Ge/A6Content/TransZ	= Ge/A6Content/HL - Ge/A6CylinderA/HL cm
+d:Ge/A6Content/RMax		= 0.78 cm
+d:Ge/A6Content/HL		= 0.2591 cm
+s:Ge/A6Content/Material	= "Air"
+
+#Linea B
+
+# B1 content
+s:Ge/B1Content/Parent	= "B1CylinderA"
+s:Ge/B1Content/Type		= "TsCylinder"
+d:Ge/B1Content/TransZ	= Ge/B1Content/HL - Ge/B1CylinderA/HL cm
+d:Ge/B1Content/RMax		= 0.78 cm
+d:Ge/B1Content/HL		= 0.2591 cm
+s:Ge/B1Content/Material	= "Air"
+
+# B2 content
+s:Ge/B2Content/Parent	= "B2CylinderA"
+s:Ge/B2Content/Type		= "TsCylinder"
+d:Ge/B2Content/TransZ	= Ge/B2Content/HL - Ge/B2CylinderA/HL cm
+d:Ge/B2Content/RMax		= 0.78 cm
+d:Ge/B2Content/HL		= 0.2591 cm
+s:Ge/B2Content/Material	= "Air"
+
+# B3 content
+s:Ge/B3Content/Parent	= "B3CylinderA"
+s:Ge/B3Content/Type		= "TsCylinder"
+d:Ge/B3Content/TransZ	= Ge/B3Content/HL - Ge/B3CylinderA/HL cm
+d:Ge/B3Content/RMax		= 0.78 cm
+d:Ge/B3Content/HL		= 0.2591 cm
+s:Ge/B3Content/Material	= "G4_WATER"
+s:Ge/B3Content/Color	= "Pink"
+
+# B4 content
+s:Ge/B4Content/Parent	= "B4CylinderA"
+s:Ge/B4Content/Type		= "TsCylinder"
+d:Ge/B4Content/TransZ	= Ge/B4Content/HL - Ge/B4CylinderA/HL cm
+d:Ge/B4Content/RMax		= 0.78 cm
+d:Ge/B4Content/HL		= 0.2591 cm
+s:Ge/B4Content/Material	= "AuNP_medium"
+
+# B5 content
+s:Ge/B5Content/Parent	= "B5CylinderA"
+s:Ge/B5Content/Type		= "TsCylinder"
+d:Ge/B5Content/TransZ	= Ge/B5Content/HL - Ge/B5CylinderA/HL cm
+d:Ge/B5Content/RMax		= 0.78 cm
+d:Ge/B5Content/HL		= 0.2591 cm
+s:Ge/B5Content/Material	= "Air"
+
+# B6 content
+s:Ge/B6Content/Parent	= "B6CylinderA"
+s:Ge/B6Content/Type		= "TsCylinder"
+d:Ge/B6Content/TransZ	= Ge/B6Content/HL - Ge/B6CylinderA/HL cm
+d:Ge/B6Content/RMax		= 0.78 cm
+d:Ge/B6Content/HL		= 0.2591 cm
+s:Ge/B6Content/Material	= "Air"
+
+
+#Linea C
+
+# C1 content
+s:Ge/C1Content/Parent	= "C1CylinderA"
+s:Ge/C1Content/Type		= "TsCylinder"
+d:Ge/C1Content/TransZ	= Ge/C1Content/HL - Ge/C1CylinderA/HL cm
+d:Ge/C1Content/RMax		= 0.78 cm
+d:Ge/C1Content/HL		= 0.2591 cm
+s:Ge/C1Content/Material	= "Air"
+
+# C2 content
+s:Ge/C2Content/Parent	= "C2CylinderA"
+s:Ge/C2Content/Type		= "TsCylinder"
+d:Ge/C2Content/TransZ	= Ge/C2Content/HL - Ge/C2CylinderA/HL cm
+d:Ge/C2Content/RMax		= 0.78 cm
+d:Ge/C2Content/HL		= 0.2591 cm
+s:Ge/C2Content/Material	= "Air"
+
+# C3 content
+s:Ge/C3Content/Parent	= "C3CylinderA"
+s:Ge/C3Content/Type		= "TsCylinder"
+d:Ge/C3Content/TransZ	= Ge/C3Content/HL - Ge/C3CylinderA/HL cm
+d:Ge/C3Content/RMax		= 0.78 cm
+d:Ge/C3Content/HL		= 0.2591 cm
+s:Ge/C3Content/Material	= "AuNP_medium"
+
+# C4 content
+s:Ge/C4Content/Parent	= "C4CylinderA"
+s:Ge/C4Content/Type		= "TsCylinder"
+d:Ge/C4Content/TransZ	= Ge/C4Content/HL - Ge/C4CylinderA/HL cm
+d:Ge/C4Content/RMax		= 0.78 cm
+d:Ge/C4Content/HL		= 0.2591 cm
+s:Ge/C4Content/Material	= "G4_WATER"
+s:Ge/C4Content/Color	= "Pink"
+
+
+# C5 content
+s:Ge/C5Content/Parent	= "C5CylinderA"
+s:Ge/C5Content/Type		= "TsCylinder"
+d:Ge/C5Content/TransZ	= Ge/C5Content/HL - Ge/C5CylinderA/HL cm
+d:Ge/C5Content/RMax		= 0.78 cm
+d:Ge/C5Content/HL		= 0.2591 cm
+s:Ge/C5Content/Material	= "Air"
+
+# C6 content
+s:Ge/C6Content/Parent	= "C6CylinderA"
+s:Ge/C6Content/Type		= "TsCylinder"
+d:Ge/C6Content/TransZ	= Ge/C6Content/HL - Ge/C6CylinderA/HL cm
+d:Ge/C6Content/RMax		= 0.78 cm
+d:Ge/C6Content/HL		= 0.2591 cm
+s:Ge/C6Content/Material	= "Air"
+
+#Linea D
+# D1 content
+s:Ge/D1Content/Parent	= "D1CylinderA"
+s:Ge/D1Content/Type		= "TsCylinder"
+d:Ge/D1Content/TransZ	= Ge/D1Content/HL - Ge/D1CylinderA/HL cm
+d:Ge/D1Content/RMax		= 0.78 cm
+d:Ge/D1Content/HL		= 0.2591 cm
+s:Ge/D1Content/Material	= "Air"
+
+# D2 content
+s:Ge/D2Content/Parent	= "D2CylinderA"
+s:Ge/D2Content/Type		= "TsCylinder"
+d:Ge/D2Content/TransZ	= Ge/D2Content/HL - Ge/D2CylinderA/HL cm
+d:Ge/D2Content/RMax		= 0.78 cm
+d:Ge/D2Content/HL		= 0.2591 cm
+s:Ge/D2Content/Material	= "Air"
+
+# D3 content
+s:Ge/D3Content/Parent	= "D3CylinderA"
+s:Ge/D3Content/Type		= "TsCylinder"
+d:Ge/D3Content/TransZ	= Ge/D3Content/HL - Ge/D3CylinderA/HL cm
+d:Ge/D3Content/RMax		= 0.78 cm
+d:Ge/D3Content/HL		= 0.2591 cm
+s:Ge/D3Content/Material	= "Air"
+
+# D4 content
+s:Ge/D4Content/Parent	= "D4CylinderA"
+s:Ge/D4Content/Type		= "TsCylinder"
+d:Ge/D4Content/TransZ	= Ge/D4Content/HL - Ge/D4CylinderA/HL cm
+d:Ge/D4Content/RMax		= 0.78 cm
+d:Ge/D4Content/HL		= 0.2591 cm
+s:Ge/D4Content/Material	= "Air"
+
+# D5 content
+s:Ge/D5Content/Parent	= "D5CylinderA"
+s:Ge/D5Content/Type		= "TsCylinder"
+d:Ge/D5Content/TransZ	= Ge/D5Content/HL - Ge/D5CylinderA/HL cm
+d:Ge/D5Content/RMax		= 0.78 cm
+d:Ge/D5Content/HL		= 0.2591 cm
+s:Ge/D5Content/Material	= "Air"
+
+# D6 content
+s:Ge/D6Content/Parent	= "D6CylinderA"
+s:Ge/D6Content/Type		= "TsCylinder"
+d:Ge/D6Content/TransZ	= Ge/D6Content/HL - Ge/D6CylinderA/HL cm
+d:Ge/D6Content/RMax		= 0.78 cm
+d:Ge/D6Content/HL		= 0.2591 cm
+s:Ge/D6Content/Material	= "Air"
+
+

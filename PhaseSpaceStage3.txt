@@ -1,0 +1,30 @@
+################################################################################################################
+#PhaseSpace Stage 3
+#Defenition of the PhaseSpace File and other parameters
+#Rescale of the PhaseSpace using a scale factor of "1.192" this factor was calculated considering the radius of our original nucleus = 3.9 um and the default nucleus for TOPAS nBIO with 4.65 um of radius. The calculation of the scale factor was 4.65/3.9 = 1.19230769
+
+# Change the PHSP file that you want to simulate
+
+
+#Inês Gomes da Silva
+# March 2024
+################################################################################################################
+
+s:So/Well_PHSP/Type										= "PhaseSpace"
+s:So/Well_PHSP/PhaseSpaceFileName						= "/media/mcbeam/HDD/Documents/Ines/PHSP_Nuc_12000_in" 
+#/media/mcbeam/HDD/Documents/Ines/PHSP_Nuc #/Users/inessilva/PHSP_Nuc
+s:So/Well_PHSP/Component								= "PHSPPosition"
+i:So/Well_PHSP/NumberOfHistoriesInRun             		= 100
+i:So/Well_PHSP/NumberOfHistoriesInRandomJob				= 3
+#b:So/Well_PHSP/PhaseSpaceIncludeEmptyHistories			= "True"
+b:So/Well_PHSP/PhaseSpacePreCheck						= "False" # defaults to true
+#b:So/Well_PHSP/LimitedAssumeEveryParticleIsNewHistory	= "True" #defaults to false
+i:So/Well_PHSP/PhaseSpaceMultipleUse					= 10
+#sv:So/Well_PHSP/OnlyIncludeParticlesNamed				= 1 "e-"
+
+
+#for phase_3_nuclearscale.txt
+#u:So/Well_PHSP/PhaseSpaceScaleXPosBy					= 1.1923076923 
+#u:So/Well_PHSP/PhaseSpaceScaleYPosBy					= 1.1923076923 
+#u:So/Well_PHSP/PhaseSpaceScaleZPosBy					= 1.1923076923
+

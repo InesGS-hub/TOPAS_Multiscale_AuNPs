@@ -1,0 +1,22 @@
+################################################################################################################
+#PhaseSpace Stage 2
+#Defenition of the PhaseSpace File and other parameters
+#Sub-file in order to change between PhaseSpace and Beam Source in more efficient way
+# Change the PHSP file that you want to simulate
+
+#Inês Gomes da Silva
+# March 2024
+################################################################################################################
+
+s:So/Well_PHSP/Type										= "PhaseSpace"
+s:So/Well_PHSP/PhaseSpaceFileName						= "/media/mcbeam/HDD/Documents/Ines/PHSP_In_B3_ParallelvolumeIn"
+s:So/Well_PHSP/Component								= "PHSPPosition"
+i:So/Well_PHSP/NumberOfHistoriesInRun					= 1000
+i:So/Well_PHSP/NumberOfHistoriesInRandomJob				= 10
+#b:So/Well_PHSP/PhaseSpaceIncludeEmptyHistories			= "True"
+b:So/Well_PHSP/PhaseSpacePreCheck						= "False" # defaults to true
+#b:So/Well_PHSP/LimitedAssumeEveryParticleIsNewHistory	= "True" #defaults to false
+i:So/Well_PHSP/PhaseSpaceMultipleUse					= 1
+u:So/Well_PHSP/PhaseSpaceScaleXPosBy					= 0.004
+u:So/Well_PHSP/PhaseSpaceScaleYPosBy					= 0.004
+#sv:So/Well_PHSP/OnlyIncludeParticlesNamed				= 1 "e-"

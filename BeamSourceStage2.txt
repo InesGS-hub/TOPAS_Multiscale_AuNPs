@@ -1,0 +1,148 @@
+###################################################################################################################################################
+# BEAM SOURCE FILE FOR STAGE 2
+# Imports the BeamScource files for each particle in the PhaseSpace with the correspondent energy distribution spectrum
+# You need to change or add another file if you are working with a diferent PhaseSpace that has different, less or more particles that the example provided
+# You have the Python script copy that converts the PhaseSpace in BeamSource, if you want to verify the accuracy of this process 
+
+
+## Inês Gomes da Silva 
+## March 2024
+###################################################################################################################################################
+
+
+## BEAM SOURCE
+
+includeFile = photon_energy_distribution.txt
+includeFile = electron_energy_distribution.txt
+includeFile = positron_energy_distribution.txt
+
+
+# ###
+# #### Python script to create a Beam Source for Stage 2: txt Files
+# ### Beam Source Stage 2 txt Files Generator
+
+# import pandas as pd
+# import numpy as np
+
+# #Import the PhaseSpace File
+# phsp_file_path = '/Applications/topas/Topas_sims/PHSP_Nuc.phsp'
+
+
+# # Define dtype based on the structure of the header file of the PHSP
+# dtype = np.dtype([
+#     ('PositionX', 'f4'),
+#     ('PositionY', 'f4'),
+#     ('PositionZ', 'f4'),
+#     ('DirectionCosineX', 'f4'),
+#     ('DirectionCosineY', 'f4'),
+#     ('Energy', 'f4'),
+#     ('Weight', 'f4'),
+#     ('ParticleType', 'i4'),
+#     ('ThirdDirectionCosineNegativeFlag', 'b1'),
+#     ('FirstScoredParticleFlag', 'b1'),
+#     ('TOPASTime', 'f4'),
+#     ('TimeOfFlight', 'f4'),
+#     ('RunID', 'i4'),
+#     ('EventID', 'i4'),
+#     ('TrackID', 'i4'),
+#     ('ParentID', 'i4'),
+#     ('InitialKineticEnergy', 'f4'),
+#     ('VertexPositionX', 'f4'),
+#     ('VertexPositionY', 'f4'),
+#     ('VertexPositionZ', 'f4'),
+#     ('InitialDirectionCosineX', 'f4'),
+#     ('InitialDirectionCosineY', 'f4'),
+#     ('InitialDirectionCosineZ', 'f4'),
+#     ('SeedPart1', 'i4'),
+#     ('SeedPart2', 'i4'),
+#     ('SeedPart3', 'i4'),
+#     ('SeedPart4', 'i4')
+# ])
+
+# # Read de PHSP file .phsp using numpy to read binary information
+# with open(phsp_file_path, 'rb') as file:
+#     # Reads the file with an array
+#     data_array = np.fromfile(file, dtype=dtype)
+
+# # Converts the array to a DataFrame of pandas
+# df = pd.DataFrame(data_array)
+
+# # TOPAS particle names avaiable in the documentation
+# particle_names = {
+#      2212: "proton",
+#     2112: "neutron",
+#     11: "electrons",
+#     -11: "positrons",
+#     22: "photon", #gamma
+#     100002003: "He3",
+#     100002004: "alpha",
+#     100001002: "deuteron",
+#     100001003: "triton"
+# }
+
+# particle_code_source = {
+#     11: "e-",
+#     -11: "e+",
+#     22: "gamma",
+#     100002003: "He3",
+#     100002004: "alpha",
+#     100001002: "deuteron",
+#     100001003: "triton",
+#     2212: "proton",
+#     2112: "neutron"
+# }
+
+
+# # Function for energy distribution calculation for each particle
+# def calculate_energy_distribution(df, particle_code, num_bins):
+#     energies = df[df['ParticleType'] == particle_code]['Energy']
+#     counts, bin_edges = np.histogram(energies, bins=num_bins)
+#     bin_centers = (bin_edges[:-1] + bin_edges[1:]) / 2
+   
+#     # Normalizes the counts so the sum is 1
+#     counts_normalized = counts / counts.sum()
+#     return bin_centers, counts_normalized
+
+# # Function to generate the enerfy spectrum file
+# def write_energy_spectrum_file(filename, particle_code, bin_centers, counts_normalized):
+#     num_bins = len(bin_centers)
+#     particle_name = particle_names.get(particle_code, "UnknownParticle")
+#     particle_source = particle_code_source.get(particle_code, "UnknownParticle")
+   
+#     with open(filename, 'w') as file:
+#         file.write(f's:So/Source{particle_name}/BeamEnergySpectrumType = "Continuous" # Either "None", "Discrete" or "Continuous"\n')
+#         file.write(f's:So/Source{particle_name}/BeamParticle = "{particle_source}"\n')
+#         values_line = f'dv:So/Source{particle_name}/BeamEnergySpectrumValues = {num_bins} ' + ' '.join([f'{value:.1f}' for value in bin_centers]) + ' MeV\n'
+#         weights_line = f'uv:So/Source{particle_name}/BeamEnergySpectrumWeights = {num_bins} ' + ' '.join([f'{weight:.2f}' for weight in counts_normalized]) + '\n'
+       
+#         file.write(values_line)
+#         file.write(weights_line)
+       
+# #For cycle --> writes in the file according to the particle and the appropriate number of bins.
+# #The saved files are already in a format suitable for inclusion in the TOPAS file as a BeamSource.
+# for code in particle_names.keys():
+#     particle_source = particle_names.get(code, "UnknownParticle")
+#     particle_counts = df['ParticleType'].value_counts()
+#     count = particle_counts.get(code, 0)
+   
+#     limits = [(10000000, 10000000), (1000000, 1000000), (100000, 100000), (10000, 10000), (1000, 1000), (100, 100), (0, 10)]
+#     for limit, bins in limits:
+#         if count > limit:
+#             num_bins = bins
+#             break
+           
+#     filename = f'{particle_source}_energy_distribution.txt'
+#     bin_centers, counts_normalized = calculate_energy_distribution(df, code, num_bins)
+   
+#     # While --> Validates that the sum of the weigths is equal to 1. If not, finds the num_bins iteratively that guarantee
+#     # counts_normalized.sum() == 1, so there is no problems in TOPAS main file.
+#     while counts_normalized.sum() != 1:
+#         num_bins = num_bins - 10
+#         bin_centers, counts_normalized = calculate_energy_distribution(df, code, num_bins)
+#     # Information about the number of bins for each particles
+#     print(f'{particle_source}', num_bins)
+   
+#     write_energy_spectrum_file(filename, code, bin_centers, counts_normalized)
+   
+#     # Information about the files for each particle
+#     print(filename, "saved successfully")

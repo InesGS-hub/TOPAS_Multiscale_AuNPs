@@ -1,0 +1,57 @@
+#Graphics
+s:Gr/ViewA/Type             = "OpenGL"
+i:Gr/ViewA/WindowSizeX      = 900
+i:Gr/ViewA/WindowSizeY      = 900
+d:Gr/ViewA/Theta            = 55 deg
+d:Gr/ViewA/Phi              = 20 deg
+s:Gr/ViewA/Projection       = "Perspective"
+d:Gr/ViewA/PerspectiveAngle = 30 deg
+u:Gr/ViewA/Zoom             = 2
+b:Gr/ViewA/HiddenLineRemovalForTrajectories = "true"
+s:Gr/ViewA/ColorBy       = "particletype"
+b:Ts/UseQT						= "true"
+sv:Gr/OnlyIncludeParticlesNamed = 1 "e-"
+
+## WORLD
+d:Ge/World/HLX		= 100 um
+d:Ge/World/HLY		= 100 um
+d:Ge/World/HLZ		= 100 um
+s:Ge/World/Material	= "G4_WATER" 
+
+s:Ge/Nano/Parent = "World"
+s:Ge/Nano/Type = "TsSphere"
+d:Ge/Nano/RMax = 3 um
+s:Ge/Nano/Material = "G4_Ca"
+s:Ge/Nano/Color ="yellow"
+
+s:So/Well_PHSP/Type										= "PhaseSpace"
+s:So/Well_PHSP/PhaseSpaceFileName						= "/media/mcbeam/HDD/Documents/Ines/PHSP_Nuc_0_120mil" 
+#/media/mcbeam/HDD/Documents/Ines/PHSP_Nuc #/Users/inessilva/PHSP_Nuc
+s:So/Well_PHSP/Component								= "PHSPPosition"
+ic:So/Well_PHSP/NumberOfHistoriesInRun             		= 100 #10⁴ or 10⁵
+i:So/Well_PHSP/NumberOfHistoriesInRandomJob				= 10
+#b:So/Well_PHSP/PhaseSpaceIncludeEmptyHistories			= "True"
+b:So/Well_PHSP/PhaseSpacePreCheck						= "False" # defaults to true
+#b:So/Well_PHSP/LimitedAssumeEveryParticleIsNewHistory	= "True" #defaults to false
+i:So/Well_PHSP/PhaseSpaceMultipleUse					= 0
+#svc:So/Well_PHSP/OnlyIncludeParticlesNamed				= 1 "e-"
+u:So/Well_PHSP/PhaseSpaceScaleXPosBy					= 1.1923076923 
+u:So/Well_PHSP/PhaseSpaceScaleYPosBy					= 1.1923076923 
+u:So/Well_PHSP/PhaseSpaceScaleZPosBy					= 1.1923076923
+
+s:Ge/PHSPPosition/Parent 	= "World"
+s:Ge/PHSPPosition/Type 		= "Group" 
+d:Ge/PHSPPosition/TransZ = -12 um 
+
+## PHYSICS
+sv:Ph/Default/Modules				= 1 "g4em-dna"
+d:Ph/Default/CutForAllParticles		= 1 nm #100 nm # single range cut to use for all particles
+d:Ph/Default/EMRangeMin				= 10. eV # minimum for EM tables. Set to 100. eV or greater when using standard Geant4 EM physics
+#d:Ph/Default/EMRangeMax				= 500. MeV # maximum for EM tables
+i:Ph/Default/EMBins					= 77 # number of bins for EM tables
+i:Ph/Default/EMBinsPerDecade		= 7 # number of bins per decade for EM tables
+b:Ph/Default/Fluorescence			= "True" #False" # Set to true to turn on Fluorescence
+b:Ph/Default/Auger					= "True" # Set to true to turn on Auger
+b:Ph/Default/AugerCascade			= "True" # Set to true to turn on AugerCascade
+b:Ph/Default/DeexcitationIgnoreCut	= "True" # "False" # Set to true to implement DeexcitationIgnoreCut
+b:Ph/Default/PIXE					= "False" # Set to true to turn on PIXE

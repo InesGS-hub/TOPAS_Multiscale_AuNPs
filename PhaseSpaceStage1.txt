@@ -1,0 +1,19 @@
+################################################################################################################
+#PhaseSpace Stage 1
+#Defenition of the PhaseSpace File and other parameters
+#Sub-file in order to change between PhaseSpace and Beam Source in more efficient way
+
+#Inês Gomes da Silva
+# March 2024
+################################################################################################################
+
+## SOURCE
+s:So/ONCOR_CBCT_Head/Type									= "PhaseSpace"
+s:So/ONCOR_CBCT_Head/PhaseSpaceFileName						= "/home/mcbeam/Documents/TOPAS_sims/cells/egsnrc_phsp/IAEA_suma.1"
+s:So/ONCOR_CBCT_Head/Component								= "PHSPPosition"
+i:So/ONCOR_CBCT_Head/NumberOfHistoriesInRun             	= 100000 #1M
+#i:So/ONCOR_CBCT_Head/NumberOfHistoriesInRandomJob			= 10
+#b:So/Example/PhaseSpaceIncludeEmptyHistories				= "True"
+b:So/ONCOR_CBCT_Head/PhaseSpacePreCheck						= "False" # defaults to true
+#b:So/ONCOR_CBCT_Head/LimitedAssumeEveryParticleIsNewHistory	= "True" #defaults to false
+i:So/ONCOR_CBCT_Head/PhaseSpaceMultipleUse					= 1

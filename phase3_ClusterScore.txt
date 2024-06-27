@@ -1,0 +1,164 @@
+##########################################################################################################################################
+## STAGE 3: NUCLEAR SCALE SCORE: ClusterScore
+## INÊS GOMES DA SILVA, MARCH 2024
+##########################################################################################################################################
+
+###REVIEW PARAMETERS GRAPHICS
+# ##Graphics
+#s:Gr/ViewA/Type             = "OpenGL"
+#i:Gr/ViewA/WindowSizeX      = 900
+#i:Gr/ViewA/WindowSizeY      = 900
+#d:Gr/ViewA/Theta            = 55 deg
+#d:Gr/ViewA/Phi              = 20 deg
+#s:Gr/ViewA/Projection       = "Perspective"
+#d:Gr/ViewA/PerspectiveAngle = 30 deg
+#u:Gr/ViewA/Zoom             = 2
+#b:Gr/ViewA/HiddenLineRemovalForTrajectories = "true"
+ 
+#s:Gr/ViewA/AxesComponent = "World" # Component in which to center the axes. Defaults to World.
+
+#b:Ts/UseQT						= "true"
+#---------------------------------------------------------------------------------------------------
+# Program control
+#---------------------------------------------------------------------------------------------------
+# Pauses
+Ts/PauseBeforeInit = "False" # This allows checking memory use before any physics tables are loaded
+Ts/PauseBeforeSequence = "False" # This allows checking memory use before any histories are run
+Ts/PauseBeforeQuit = "True" # This allows visualizing graphics before exiting
+# Verbosity
+i:Ts/RunVerbosity = 0
+i:Ts/EventVerbosity = 0
+i:Ts/TrackingVerbosity = 0
+i:Ts/SequenceVerbosity = 0
+i:Ts/ChemistryVerbosity = 0
+ 
+s:So/Well_PHSP/Type										= "PhaseSpace"
+
+s:So/Well_PHSP/PhaseSpaceFileName						= "/media/mcbeam/HDD/Documents/Ines/PHSP_Nuc_0_0" 
+d:Sc/ClusterScorer/TotalDose = 0.25 Gy # Total dose to be delivered across all secondary particles
+
+
+#/media/mcbeam/HDD/Documents/Ines/PHSP_Nuc #/Users/inessilva/PHSP_Nuc
+s:So/Well_PHSP/Component								= "PHSPPosition"
+i:So/Well_PHSP/NumberOfHistoriesInRun             		= 10
+i:So/Well_PHSP/NumberOfHistoriesInRandomJob				= 3
+#b:So/Well_PHSP/PhaseSpaceIncludeEmptyHistories			= "True"
+b:So/Well_PHSP/PhaseSpacePreCheck						= "False" # defaults to true
+#b:So/Well_PHSP/LimitedAssumeEveryParticleIsNewHistory	= "True" #defaults to false
+i:So/Well_PHSP/PhaseSpaceMultipleUse					= 100
+#sv:So/Well_PHSP/OnlyIncludeParticlesNamed				= 1 "e-"
+#---------------------------------------------------------------------------------------------------
+# Geometry
+#---------------------------------------------------------------------------------------------------
+# World
+d:Ge/World/HLX=10. um
+d:Ge/World/HLY=10. um
+d:Ge/World/HLZ=10. um
+s:Ge/World/Material = "G4_WATER"
+
+s:Ge/PHSPPosition/Parent 	= "World"
+s:Ge/PHSPPosition/Type 		= "Group" 
+
+#For phase_2_micro_22.3_22.3.txt with TsDistributedComponents
+d:Ge/PHSPPosition/TransZ = -3.9 um 
+d:Ge/PHSPPosition/TransX = 0 um
+d:Ge/PHSPPosition/TransY = 0 um
+
+
+# Spherical cell with volume ~2000 um^3, filled with water
+s:Ge/Nucleus/Type="TsSphere"
+s:Ge/Nucleus/Parent="World"
+d:Ge/Nucleus/RMax = 3.9 um
+d:Ge/Nucleus/RMin = 0. um
+s:Ge/Nucleus/Material = "G4_WATER"
+
+# # DNA
+s:Ge/MyDNA/Type="VoxelizedNuclearDNA"
+s:Ge/MyDNA/Parent="Nucleus"
+s:Ge/MyDNA/Material="G4_WATER"
+s:Ge/MyDNA/Color ="blue"
+b:Ge/MyDNA/BuildNucleus = "True" # If true, build voxelized cubic nucleus. If false, build single chromatin fiber
+i:Ge/MyDNA/NumVoxelsPerSide = 26 # Number of voxels per side of cubic nucleus
+d:Ge/MyDNA/VoxelSideLength = 150 nm # Modifying this value may break the geometry 
+b:Ge/MyDNA/FillFibersWithDNA = "True" # Either fill chromatin fibers with DNA or generate empty fibers
+i:Ge/MyDNA/DnaNumNucleosomePerFiber = 90 # Max 90
+i:Ge/MyDNA/DnaNumBpPerNucleosome = 200 # Max 200
+b:Ge/MyDNA/CutVolumes = "True" # cut DNA residues to prevent overlaps
+
+# # Materials
+s:Ge/MyDNA/DNAMaterialName = "G4_WATER_DNA"
+s:Ge/MyDNA/HistoneMaterialName = "G4_WATER_HISTONE"
+s:Ma/G4_WATER_DNA/CloneFromMaterial = "G4_WATER"
+d:Ma/G4_WATER_DNA/CloneWithDensity  = 1.407 g/cm3
+s:Ma/G4_WATER_HISTONE/CloneFromMaterial = "G4_WATER"
+d:Ma/G4_WATER_HISTONE/CloneWithDensity  = 1.0 g/cm3
+i:Ma/Verbosity = 1
+
+b:Ge/CheckForOverlaps = "False"
+b:Ge/CheckForUnusedComponents = "False"
+
+#---------------------------------------------------------------------------------------------------
+# Clustered DNA damage scorer
+#---------------------------------------------------------------------------------------------------
+s:Sc/ClusterScorer/Quantity = "ClusteredDNADamage"
+s:Sc/ClusterScorer/Component = "MyDNA"
+b:Sc/ClusterScorer/PropagateToChildren = "True"
+sv:Sc/ClusterScorer/Modules = Ph/Default/Modules
+sv:Sc/ClusterScorer/OnlyIncludeIfInMaterial = 3 "G4_WATER_HISTONE" "G4_WATER_DNA" "G4_WATER"
+includeFile = /home/mcbeam/topas_extensions/topas-nbio/DNADamageCluster/supportFiles/DNADamageParameters.txt # defines parameters related to direct and indirect action
+
+# # Provide scorer with access to some geometry parameters
+s:Sc/ClusterScorer/DNAMaterialName = Ge/MyDNA/DNAMaterialName
+s:Sc/ClusterScorer/HistoneMaterialName = Ge/MyDNA/HistoneMaterialName
+i:Sc/ClusterScorer/DnaNumNucleosomePerFiber = Ge/MyDNA/DnaNumNucleosomePerFiber
+i:Sc/ClusterScorer/DnaNumBpPerNucleosome = Ge/MyDNA/DnaNumBpPerNucleosome
+i:Sc/ClusterScorer/NumVoxelsPerSide = Ge/MyDNA/NumVoxelsPerSide
+d:Sc/ClusterScorer/VoxelSideLength = Ge/MyDNA/VoxelSideLength nm
+b:Sc/ClusterScorer/BuildNucleus = Ge/MyDNA/BuildNucleus
+
+# Specify whether to terminate simulation once a dose threshold has been exceeded (otherwise use NumberOfHistoriesInRun)
+b:Sc/ClusterScorer/UseDoseThreshold = "True"
+d:Sc/ClusterScorer/DoseThreshold = Sc/ClusterScorer/TotalDose Gy * 1.0
+
+
+# # Options to modify how damage yields are recorded
+b:Sc/ClusterScorer/IncludeDirectDamage = "True"
+b:Sc/ClusterScorer/IncludeIndirectDamage = "True"
+b:Sc/ClusterScorer/ScoreClusters = "True" # toggle whether or not to record clustered DNA damage
+b:Sc/ClusterScorer/RecordDamagePerEvent = "False" # record damage per run or per event
+b:Sc/ClusterScorer/RecordDamagePerFiber= "False" # record damage for all fibres together or per fibre
+
+# # Output files
+s:Sc/ClusterScorer/OutputType = "ASCII" # Applies to main output file (damage yields) only
+b:Sc/ClusterScorer/OutputToConsole = "True"
+s:Sc/ClusterScorer/IfOutputFileAlreadyExists = "Overwrite"
+b:Sc/ClusterScorer/OutputHeaders = "False" # Applies to additional output files
+s:Sc/ClusterScorer/OutputFile = "damage_yields" # Main output file with DNA damage yields
+s:Sc/ClusterScorer/FileRunSummary = "data_run_summary" # Output file containing run details: dose delivery, etc.
+s:Sc/ClusterScorer/FileComplexDSB = "data_comp_dsb_cluster" # Output file containing complex-DSB cluster properties
+s:Sc/ClusterScorer/FileNonDSBCluster = "data_non_dsb_cluster" # Output file containing non-DSB cluster properties
+
+#---------------------------------------------------------------------------------------------------
+# Physics
+#---------------------------------------------------------------------------------------------------
+# sv:Ph/Default/Modules = 2 "g4em-dna_opt2and4" "TsEmDNAChemistryExtended"
+sv:Ph/Default/Modules = 2 "TsEmDNAPhysics" "TsEmDNAChemistry"
+# sv:Ph/Default/Modules = 2 "g4em-dna_opt2and4" "g4em-dna-chemistry"
+d:Ph/Default/EMRangeMin = 10. eV # minimum for EM tables
+b:Ph/Default/Fluorescence = "True"
+b:Ph/Default/Auger = "True"
+b:Ph/Default/AugerCascade = "True"
+b:Ph/Default/DeexcitationIgnoreCut = "True"
+
+#---------------------------------------------------------------------------------------------------
+# Chemistry
+
+#---------------------------------------------------------------------------------------------------
+# includeFile = supportFiles/TOPASChemistry_Extended.txt
+includeFile = /home/mcbeam/topas_extensions/topas-nbio/DNADamageCluster/supportFiles/TOPASChemistry.txt
+
+## TOPAS PARAMETERS
+i:Ts/ShowHistoryCountAtInterval = 1000
+i:Ts/NumberOfThreads			= 5
+i:Ts/Seed 						= 100
+  

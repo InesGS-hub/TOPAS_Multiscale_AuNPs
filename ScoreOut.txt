@@ -1,0 +1,87 @@
+################################################################################################################
+#SCORE FOR VOLUMES GOING OUT FOR C3 AND B3
+#Trying to understand the problems associated with the parallel volumes for scoring
+#Maybe the step size is teh problem, but know we are justs trying to understand the filtering problem in scores
+
+#Inês Gomes da Silva
+# March 2024
+################################################################################################################
+
+# PHSP ParallelPlane in well C3 going Out
+s:Sc/PHSPInC3ParallelPlaneSurfaceOut/Quantity = "PhaseSpace"
+b:Sc/PHSPInC3ParallelPlaneSurfaceOut/OutputToConsole = "True"
+s:Sc/PHSPInC3ParallelPlaneSurfaceOut/Surface = "C3Parallel/ZMinusSurface" #"C3Parallel/AnySurface"
+s:Sc/PHSPInC3ParallelPlaneSurfaceOut/OutputType = "Binary" # ASCII, Binary, Limited or ROOT
+s:Sc/PHSPInC3ParallelPlaneSurfaceOut/OutputFile = "/media/mcbeam/HDD/Documents/Ines/PHSP_In_C3_ParallelPlaneOut"
+#s:Sc/PHSPInC3OnlyIncludeParticlesGoing = "In"
+b:Sc/PHSPInC3ParallelPlaneSurfaceOut/IncludeTOPASTime = "True"
+b:Sc/PHSPInC3ParallelPlaneSurfaceOut/IncludeTimeOfFlight = "True"
+b:Sc/PHSPInC3ParallelPlaneSurfaceOut/IncludeRunID = "True"
+b:Sc/PHSPInC3ParallelPlaneSurfaceOut/IncludeEventID = "True"
+b:Sc/PHSPInC3ParallelPlaneSurfaceOut/IncludeTrackID = "True"
+b:Sc/PHSPInC3ParallelPlaneSurfaceOut/IncludeParentID = "True"
+b:Sc/PHSPInC3ParallelPlaneSurfaceOut/IncludeVertexInfo = "True"
+b:Sc/PHSPInC3ParallelPlaneSurfaceOut/IncludeSeed = "True"
+s:Sc/PHSPInC3ParallelPlaneSurfaceOut/IfOutputFileAlreadyExists = "Overwrite"
+s:Sc/PHSPInC3ParallelPlaneSurfaceOut/OnlyIncludeParticlesGoing = "Out"
+b:Sc/PHSPInC3ParallelPlaneSurfaceOut/KillAfterPhaseSpace = "False"
+
+# PHSP ParallelPlane in well B3 going Out
+s:Sc/PHSPInB3ParallelPlaneSurfaceOut/Quantity = "PhaseSpace"
+b:Sc/PHSPInB3ParallelPlaneSurfaceOut/OutputToConsole = "True"
+s:Sc/PHSPInB3ParallelPlaneSurfaceOut/Surface = "B3Parallel/ZMinusSurface" #"C3Parallel/AnySurface"
+s:Sc/PHSPInB3ParallelPlaneSurfaceOut/OutputType = "Binary" # ASCII, Binary, Limited or ROOT
+s:Sc/PHSPInB3ParallelPlaneSurfaceOut/OutputFile = "/media/mcbeam/HDD/Documents/Ines/PHSP_In_B3_ParallelPlaneOut"
+b:Sc/PHSPInB3ParallelPlaneSurfaceOut/IncludeTOPASTime = "True"
+b:Sc/PHSPInB3ParallelPlaneSurfaceOut/IncludeTimeOfFlight = "True"
+b:Sc/PHSPInB3ParallelPlaneSurfaceOut/IncludeRunID = "True"
+b:Sc/PHSPInB3ParallelPlaneSurfaceOut/IncludeEventID = "True"
+b:Sc/PHSPInB3ParallelPlaneSurfaceOut/IncludeTrackID = "True"
+b:Sc/PHSPInB3ParallelPlaneSurfaceOut/IncludeParentID = "True"
+b:Sc/PHSPInB3ParallelPlaneSurfaceOut/IncludeVertexInfo = "True"
+b:Sc/PHSPInB3ParallelPlaneSurfaceOut/IncludeSeed = "True"
+s:Sc/PHSPInB3ParallelPlaneSurfaceOut/IfOutputFileAlreadyExists = "Overwrite"
+s:Sc/PHSPInB3ParallelPlaneSurfaceOut/OnlyIncludeParticlesGoing = "Out"
+b:Sc/PHSPInB3ParallelPlaneSurfaceOut/KillAfterPhaseSpace = "False"
+
+
+# # PHSP content in well C3 going Out
+# s:Sc/PHSPInC3contentPlaneOut/Quantity = "PhaseSpace"
+# b:Sc/PHSPInC3contentPlaneOut/OutputToConsole = "True"
+# s:Sc/PHSPInC3contentPlaneOut/Surface = "C3Content/ZMinusSurface" #"C3Parallel/AnySurface"
+# s:Sc/PHSPInC3contentPlaneOut/OutputType = "Binary" # ASCII, Binary, Limited or ROOT
+# s:Sc/PHSPInC3contentPlaneOut/OutputFile = "/media/mcbeam/HDD/Documents/Ines/PHSP_In_C3_contentPlaneOut"
+# b:Sc/PHSPInC3contentPlaneOut/IncludeTOPASTime = "True"
+# b:Sc/PHSPInC3contentPlaneOut/IncludeTimeOfFlight = "True"
+# b:Sc/PHSPInC3contentPlaneOut/IncludeRunID = "True"
+# b:Sc/PHSPInC3contentPlaneOut/IncludeEventID = "True"
+# b:Sc/PHSPInC3contentPlaneOut/IncludeTrackID = "True"
+# b:Sc/PHSPInC3contentPlaneOut/IncludeParentID = "True"
+# b:Sc/PHSPInC3contentPlaneOut/IncludeVertexInfo = "True"
+# b:Sc/PHSPInC3contentPlaneOut/IncludeSeed = "True"
+# #sv:Sc/PHSPInC3/OnlyIncludeParticlesNamed = 1 "Proton"
+# s:Sc/PHSPInC3contentPlaneOut/IfOutputFileAlreadyExists = "Overwrite"
+# s:Sc/PHSPInC3contentPlaneOut/OnlyIncludeParticlesGoing = "Out"
+# b:Sc/PHSPInC3contentPlaneOut/KillAfterPhaseSpace = "False"
+
+
+# # PHSP ParallelContentPlan in well C3 going Out
+# s:Sc/PHSPInC3ParallelContentPlanOut/Quantity = "PhaseSpace"
+# b:Sc/PHSPInC3ParallelContentPlanOut/OutputToConsole = "True"
+# s:Sc/PHSPInC3ParallelContentPlanOut/Surface = "C3ParallelContent/ZMinusSurface" #"B3Parallel/AnySurface"
+# s:Sc/PHSPInC3ParallelContentPlanOut/OutputType = "Binary" # ASCII, Binary, Limited or ROOT
+# s:Sc/PHSPInC3ParallelContentPlanOut/OutputFile = "/media/mcbeam/HDD/Documents/Ines/PHSP_In_C3_ParallelContentPlanOut"
+# b:Sc/PHSPInC3ParallelContentPlanOut/IncludeTOPASTime = "True"
+# b:Sc/PHSPInC3ParallelContentPlanOut/IncludeTimeOfFlight = "True"
+# b:Sc/PHSPInC3ParallelContentPlanOut/IncludeRunID = "True"
+# b:Sc/PHSPInC3ParallelContentPlanOut/IncludeEventID = "True"
+# b:Sc/PHSPInC3ParallelContentPlanOut/IncludeTrackID = "True"
+# b:Sc/PHSPInC3ParallelContentPlanOut/IncludeParentID = "True"
+# b:Sc/PHSPInC3ParallelContentPlanOut/IncludeVertexInfo = "True"
+# b:Sc/PHSPInC3ParallelContentPlanOut/IncludeSeed = "True"
+# #sv:Sc/PHSPInB3/OnlyIncludeParticlesNamed = 1 "Proton"
+# s:Sc/PHSPInC3ParallelContentPlanOut/IfOutputFileAlreadyExists = "Overwrite"
+# s:Sc/PHSPInC3ParallelContentPlanOut/OnlyIncludeParticlesGoing = "Out"
+# b:Sc/PHSPInC3ParallelContentPlanOut/KillAfterPhaseSpace = "False"
+
+

@@ -1,0 +1,251 @@
+## REVIEW PARAMETERS GRAPHICS
+# #Graphics
+# s:Gr/ViewA/Type             = "OpenGL"
+# i:Gr/ViewA/WindowSizeX      = 900
+# i:Gr/ViewA/WindowSizeY      = 900
+# d:Gr/ViewA/Theta            = 55 deg
+# d:Gr/ViewA/Phi              = 20 deg
+# s:Gr/ViewA/Projection       = "Perspective"
+# d:Gr/ViewA/PerspectiveAngle = 30 deg
+# u:Gr/ViewA/Zoom             = 2
+# b:Gr/ViewA/HiddenLineRemovalForTrajectories = "True"
+# #b:Gr/ViewA/IncludeAxes = "true" 
+# #s:Gr/ViewA/AxesComponent = "World" # Component in which to center the axes. Defaults to World.
+# #d:Gr/ViewA/AxesSize = 100. um 
+# b:Ts/UseQT						= "True"
+
+## SOURCE
+# includeFile =  /home/mcbeam/Documents/TOPAS_sims/cells/BeamSourceStage2.txt # If you want to use a BeamSource
+includeFile = /home/mcbeam/Documents/TOPAS_sims/cells/PhaseSpaceStage2.txt # If you want to use a PhaseSpace #/home/mcbeam/Documents/TOPAS_sims/cells/
+
+################################################################################################################################################
+# # AuNP mediums
+
+# # Medium with 22.3 g/mL
+# b:Ma/AuNP_medium22p3/BuildFromMaterials	= "True"
+# sv:Ma/AuNP_medium22p3/Components		= 2 "G4_WATER" "G4_Au"
+# uv:Ma/AuNP_medium22p3/Fractions			= 2 0.9777 0.0223
+# d:Ma/AuNP_medium22p3/Density			= 1.0223 g/cm3
+# s:Ma/AuNP_medium22p3/DefaultColor		= "Purple"
+
+# # Medium with 2.23 g/mL
+# b:Ma/AuNP_medium2p23/BuildFromMaterials	= "True"
+# sv:Ma/AuNP_medium2p23/Components		= 2 "G4_WATER" "G4_Au"
+# uv:Ma/AuNP_medium2p23/Fractions			= 2 0.99777 0.00223
+# d:Ma/AuNP_medium2p23/Density			= 1.00223 g/cm3
+# s:Ma/AuNP_medium2p23/DefaultColor		= "Purple"
+
+# # Medium with 11.15 g/mL
+# b:Ma/AuNP_medium11p15/BuildFromMaterials	= "True"
+# sv:Ma/AuNP_medium11p15/Components		= 2 "G4_WATER" "G4_Au"
+# uv:Ma/AuNP_medium11p15/Fractions			= 2 0.98885 0.01115
+# d:Ma/AuNP_medium11p15/Density			= 1.01115 g/cm3
+# s:Ma/AuNP_medium11p15/DefaultColor		= "Purple"
+################################################################################################################################################
+
+## GEOMETRIES
+# Beam
+s:Ge/PHSPPosition/Parent 	= "World"
+s:Ge/PHSPPosition/Type 		= "Group"
+d:Ge/PHSPPosition/TransX 	= 38 um
+d:Ge/PHSPPosition/TransY 	= -38 um # -38 for B3, 38 for C3
+d:Ge/PHSPPosition/TransZ 	= -0.05 cm
+
+# World
+d:Ge/World/HLX		= 100. um
+d:Ge/World/HLY		= 100. um
+d:Ge/World/HLZ		= 100. um
+s:Ge/World/Material	= "G4_WATER" # For wells filled with cell media (B3)
+#s:Ge/World/Material	= "AuNP_Medium" # For wells filled with AuNP mix (C3)
+
+# Polystirene below the cell
+s:Ge/Polystyrene/Parent		= "World"
+s:Ge/Polystyrene/Type		= "TsBox"
+d:Ge/Polystyrene/TransZ		= -50 um
+d:Ge/Polystyrene/HLX		= 100 um
+d:Ge/Polystyrene/HLY		= 100 um
+d:Ge/Polystyrene/HLZ		= 50 um
+s:Ge/Polystyrene/Material	= "G4_POLYSTYRENE"
+s:Ge/Polystyrene/Color	= "red"
+
+############################################################################################################################################################ #Explicit nanoparticles Out and In 
+############################################################################################################################################################
+
+# Explicit nanoparticles
+s:Ge/ExplicitNPs/Parent				= "World"
+s:Ge/ExplicitNPs/Type				= "TsDistributedComponents"
+s:Ge/ExplicitNPs/Material			= "G4_WATER"
+d:Ge/ExplicitNPs/ComponentRadius	= 9.3 um
+d:Ge/ExplicitNPs/ComponentRmin		= 7.8 um
+d:Ge/ExplicitNPs/ComponentSTheta	= 0 deg
+d:Ge/ExplicitNPs/ComponentDTheta	= 90 deg
+d:Ge/ExplicitNPs/ElementRadius		= 7.5 nm #AuNP have a core diameter of 15 nm
+s:Ge/ExplicitNPs/ElementMaterial	= "G4_Au"
+s:Ge/ExplicitNPs/PositionsFile		= "/home/mcbeam/Documents/TOPAS_sims/cells/points_108mil_out.txt" #/home/mcbeam/Documents/TOPAS_sims/cells/
+s:Ge/ExplicitNPs/Color				= "Yellow" #For C3 
+#s:Ge/ExplicitNPs/Color				= "Blue" #For B3 
+
+##Cell
+s:Ge/CellHemisphere/Type			= "TsDistributedComponents"
+s:Ge/CellHemisphere/Parent			= "World"
+s:Ge/CellHemisphere/Material		= "G4_WATER"
+d:Ge/CellHemisphere/ComponentRadius	= 7.8 um  # Set the radius to 7.811 micrometers
+d:Ge/CellHemisphere/ComponentRmin	= 0 um
+d:Ge/CellHemisphere/ComponentSTheta	= 0 deg
+d:Ge/CellHemisphere/ComponentDTheta	= 90 deg  # Limit the polar angle to 90 degrees (hemisphere)
+d:Ge/CellHemisphere/ElementRadius	= 7.5 nm # AuNP have a core diameter of 15 nm
+s:Ge/CellHemisphere/ElementMaterial	= "G4_Au"
+s:Ge/CellHemisphere/PositionsFile	= "/home/mcbeam/Documents/TOPAS_sims/cells/points_12mil_in.txt" #/home/mcbeam/Documents/TOPAS_sims/cells/ # null.txt . points_0_2.23 . points_0_11.15 . points_0_22.3
+s:Ge/CellHemisphere/Color ="Yellow"
+# Nucleus
+s:Ge/Nucleus/Type			= "TsSphere"
+s:Ge/Nucleus/Parent			= "CellHemisphere"
+d:Ge/Nucleus/TransZ			= Ge/Nucleus/RMax um
+d:Ge/Nucleus/RMax			= 3.9 um
+s:Ge/Nucleus/Color			= "Red"
+b:Ge/Nucleus/IsParallel		= "True"
+s:Ge/Nucleus/DrawingStyle	= "Solid"
+
+################################################################################################################################################
+#Explicit Nanoparticles: ONE GEOMETRY ################################################################################################################################################
+
+# # Explicit nanoparticles
+# s:Ge/ExplicitNPs/Parent				= "World"
+# s:Ge/ExplicitNPs/Type				= "TsDistributedComponents"
+# s:Ge/ExplicitNPs/Material			= "G4_WATER"
+# d:Ge/ExplicitNPs/ComponentRadius	= 9.3 um
+# d:Ge/ExplicitNPs/ComponentRmin		= 0 um
+# d:Ge/ExplicitNPs/ComponentSTheta	= 0 deg
+# d:Ge/ExplicitNPs/ComponentDTheta	= 90 deg
+# d:Ge/ExplicitNPs/ElementRadius		= 7.5 nm #AuNP have a core diameter of 15 nm
+# s:Ge/ExplicitNPs/ElementMaterial	= "G4_Au"
+# s:Ge/ExplicitNPs/PositionsFile		= "points_0_11.5.txt" #/home/mcbeam/Documents/TOPAS_sims/cells/
+# #s:Ge/ExplicitNPs/Color				= "Yellow" #For C3 
+# s:Ge/ExplicitNPs/Color				= "Blue" #For B3 
+
+# # Nucleus
+# s:Ge/Nucleus/Type			= "TsSphere"
+# s:Ge/Nucleus/Parent			= "World"
+# d:Ge/Nucleus/TransZ			= Ge/Nucleus/RMax um
+# d:Ge/Nucleus/RMax			= 3.9 um
+# s:Ge/Nucleus/Color			= "Red"
+# b:Ge/Nucleus/IsParallel		= "True"
+# s:Ge/Nucleus/DrawingStyle	= "Solid"
+
+################################################################################################################################################
+#NOT Explicit Nanoparticles: SIMPLE GEOMETRIES ################################################################################################################################################
+
+# # Hemisphere around cell (detailed cell media)
+# s:Ge/DetailedMedia/Parent		    = "World"
+# s:Ge/DetailedMedia/Type			= "TsSphere" 
+# s:Ge/DetailedMedia/Material		= "G4_WATER"
+# d:Ge/DetailedMedia/RMax			= 9.3 um
+# d:Ge/DetailedMedia/DPhi			= 360 deg # Set the azimuthal extent to 360 degrees (hemisphere)
+# d:Ge/DetailedMedia/DTheta		= 90 deg # Limit the polar angle to 90 degrees (hemisphere)
+# s:Ge/DetailedMedia/Color		= "Pink" #Pink for media, purple for AuNP
+# #s:Ge/DetailedMedia/Color		= "Purple" #Pink for media, purple for AuNP
+
+
+# s:Ge/CellHemisphere/Type			= "TsSphere"
+# s:Ge/CellHemisphere/Parent			= "DetailedMedia"
+# s:Ge/CellHemisphere/Material		= "G4_WATER"
+# d:Ge/CellHemisphere/RMax			= 7.8 um  # Set the radius to 7.811 micrometers
+# d:Ge/CellHemisphere/DTheta			= 90 deg  # Limit the polar angle to 90 degrees (hemisphere)
+
+# # Nucleus
+# s:Ge/Nucleus/Type			= "TsSphere"
+# s:Ge/Nucleus/Parent			= "CellHemisphere"
+# s:Ge/Nucleus/Material		= "G4_WATER"
+# d:Ge/Nucleus/TransZ			= Ge/Nucleus/RMax um
+# d:Ge/Nucleus/RMax			= 3.9 um
+# s:Ge/Nucleus/Color			= "Red"
+# #s:Ge/Nucleus/DrawingStyle	= "Solid"
+
+################################################################################################################################################
+## Explicit Nanoparticles: TsDistributedComponentsNew
+################################################################################################################################################
+
+# s:Ge/Cell/Parent = "World"
+# s:Ge/Cell/Type	= "TsDistributedComponentsNew"
+# #As default parameters in the C++ code
+# d:Ge/Cell/CellRadius			= 9.3 um
+# d:Ge/Cell/NucleusRadius 		= 3.9 um
+# d:Ge/Cell/rNP					= 7.5 nm
+
+# s:Ge/Cell/Material			= "G4_WATER" 
+# s:Ge/Cell/Color 			= "gray"
+# s:Ge/Cell/NucleusMaterial	= "G4_WATER" 
+# s:Ge/Cell/NanoMaterial		= "G4_Au"
+# s:Ge/Cell/PointsFileName 	= "points_0_2.23.txt" #/Applications/topas/Topas_sims/
+
+################################################################################################################################################
+
+# SCORERS
+
+# Cell parallel for scoring
+s:Ge/CellHemisphereParallel/Type			= "TsSphere"
+s:Ge/CellHemisphereParallel/Parent			= "World"
+b:Ge/CellHemisphereParallel/IsParallel		= "True"
+d:Ge/CellHemisphereParallel/RMax			= 7.8 um  # Set the radius to 7.811 micrometers
+d:Ge/CellHemisphereParallel/DTheta			= 90 deg  # Limit the polar angle to 90 degrees (hemisphere)
+
+# PHSP around nucleus
+s:Sc/PHSPNuc/Quantity					= "PhaseSpace"
+b:Sc/PHSPNuc/OutputToConsole			= "True"
+s:Sc/PHSPNuc/Surface					= "Nucleus/OuterCurvedSurface"
+s:Sc/PHSPNuc/OutputType					= "Binary" # ASCII, Binary, Limited or ROOT
+s:Sc/PHSPNuc/OutputFile					= "/media/mcbeam/HDD/Documents/Ines/PHSP_Nuc_108mil_12mil"
+#s:Sc/PHSPBelowB3OnlyIncludeParticlesGoing	= "In"
+b:Sc/PHSPNuc/IncludeTOPASTime			= "True"
+b:Sc/PHSPNuc/IncludeTimeOfFlight		= "True"
+b:Sc/PHSPNuc/IncludeRunID				= "True"
+b:Sc/PHSPNuc/IncludeEventID				= "True"
+b:Sc/PHSPNuc/IncludeTrackID				= "True"
+b:Sc/PHSPNuc/IncludeParentID			= "True"
+b:Sc/PHSPNuc/IncludeVertexInfo			= "True"
+b:Sc/PHSPNuc/IncludeSeed				= "True"
+#sv:Sc/PHSPNuc/OnlyIncludeParticlesNamed = 1 "Proton"
+s:Sc/PHSPNuc/IfOutputFileAlreadyExists	= "Overwrite"
+i:Sc/PHSPNuc/OutputBufferSize			= 1000
+s:Sc/PHSPNuc/OnlyIncludeParticlesGoing = "In"
+
+
+s:Sc/DoseAtCell/Quantity					= "DoseToMedium"
+s:Sc/DoseAtCell/Component					= "CellHemisphereParallel"
+b:Sc/DoseAtCell/OutputToConsole				= "True"
+s:Sc/DoseAtCell/IfOutputFileAlreadyExists	= "Overwrite"
+b:Sc/DoseAtCell/PropagateToChildren			= "True"
+sv:Sc/DoseAtCell/Report = 9 "Sum", "Mean", "Histories", "Count_In_Bin", "Second_Moment", "Variance", "Standard_Deviation", "Min", "Max"
+
+s:Sc/DoseAtNucleus/Quantity						= "DoseToMedium"
+s:Sc/DoseAtNucleus/Component					= "Nucleus"
+b:Sc/DoseAtNucleus/OutputToConsole				= "True"
+s:Sc/DoseAtNucleus/IfOutputFileAlreadyExists	= "Overwrite"
+sv:Sc/DoseAtNucleus/Report = 9 "Sum", "Mean", "Histories", "Count_In_Bin", "Second_Moment", "Variance", "Standard_Deviation", "Min", "Max"
+
+## PHYSICS
+sv:Ph/Default/Modules				= 1 "TsEmDNAPhysics"
+d:Ph/Default/CutForAllParticles		= 1 nm #100 nm # single range cut to use for all particles
+#d:Ph/Default/CutForGamma			= 0.05 mm # overrides CutForAllParticles for Gamma
+#d:Ph/Default/CutForElectron 		= 50 nm # overrides CutForAllParticles for Electron
+#d:Ph/Default/CutForPositron 		= 0.05 mm # overrides CutForAllParticles for Positron
+#d:Ph/Default/CutForProton 			= 0.05 mm # overrides CutForAllParticles for Proton
+#d:Ph/Default/CutForAlpha			= 0.05 mm # overrides CutForAllParticles for Alpha
+#d:Ph/Default/CutForDeuteron		= 0.05 mm # overrides CutForAllParticles for Deuteron
+#d:Ph/Default/CutForTriton			= 0.05 mm # overrides CutForAllParticles for Triton
+d:Ph/Default/EMRangeMin				= 10. eV #10. eV # minimum for EM tables. Set to 100. eV or greater when using standard Geant4 EM physics
+d:Ph/Default/EMRangeMax				= 500. MeV # maximum for EM tables
+i:Ph/Default/EMBins					= 77 # number of bins for EM tables
+i:Ph/Default/EMBinsPerDecade		= 7 # number of bins per decade for EM tables
+b:Ph/Default/Fluorescence			= "True" #False" # Set to true to turn on Fluorescence
+b:Ph/Default/Auger					= "True" # Set to true to turn on Auger
+b:Ph/Default/AugerCascade			= "True" # Set to true to turn on AugerCascade
+b:Ph/Default/DeexcitationIgnoreCut	= "False" # Set to true to implement DeexcitationIgnoreCut
+b:Ph/Default/PIXE					= "False" # Set to true to turn on PIXE
+
+## TOPAS PARAMETERS
+i:Ts/ShowHistoryCountAtInterval = 1000000
+i:Ts/NumberOfThreads			= 1
+b:Ts/PauseBeforeQuit			= "True"
+i:Ts/Seed 						= 1
+

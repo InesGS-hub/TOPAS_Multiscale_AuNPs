@@ -1,0 +1,186 @@
+# ### REVIEW PARAMETERS GRAPHICS
+# # Graphics
+# s:Gr/ViewA/Type             = "OpenGL"
+# i:Gr/ViewA/WindowSizeX      = 900
+# i:Gr/ViewA/WindowSizeY      = 900
+# d:Gr/ViewA/Theta            = 55 deg
+# d:Gr/ViewA/Phi              = 20 deg
+# s:Gr/ViewA/Projection       = "Perspective"
+# d:Gr/ViewA/PerspectiveAngle = 30 deg
+# u:Gr/ViewA/Zoom             = 2
+# b:Gr/ViewA/HiddenLineRemovalForTrajectories = "True"
+
+## TOPAS PARAMETERS
+i:Ts/ShowHistoryCountAtInterval = 1000000
+i:Ts/NumberOfThreads			= -1
+b:Ts/PauseBeforeQuit			= "True"
+#b:Ts/UseQT						= "True"
+
+########################################################################################
+
+## SOURCE
+includeFile = /home/mcbeam/Documents/TOPAS_sims/cells/PhaseSpaceStage1.txt
+
+########################################################################################
+
+## GEOMETRIES
+# SOURCE POSITION
+s:Ge/PHSPPosition/Parent 	= "World"
+s:Ge/PHSPPosition/Type 		= "Group"
+d:Ge/PHSPPosition/TransZ 	= -45 cm
+d:Ge/PHSPPosition/RotX 		= 0. deg
+
+# Treatment Table Carbon Fiber
+s:Ge/Table/Parent 			= "World"
+s:Ge/Table/Type 			= "TsBox"
+d:Ge/Table/HLX				= 25. cm # Width
+d:Ge/Table/HLY				= 122.5 cm
+d:Ge/Table/HLZ				= 3.25 cm
+d:Ge/Table/TransX			= 0.0 cm # defaults to 0
+d:Ge/Table/TransY			= 0.0 cm # defaults to 0
+d:Ge/Table/TransZ			= -4.5 cm # defaults to 0
+# d:Ge/Table/RotX				= 0.0 deg # defaults to 0
+# d:Ge/Table/RotY				= 0.0 deg # defaults to 0
+# d:Ge/Table/RotZ				= 0.0 deg # defaults to 0
+s:Ge/Table/Material 		= "Table"
+#b:Ge/Table/Invisible 		= "True" #default is False
+
+# Treatment Table Foam
+s:Ge/Foam/Parent 			= "Table"
+s:Ge/Foam/Type 				= "TsBox"
+d:Ge/Foam/HLX				= 24.5 cm # Width
+d:Ge/Foam/HLY				= 122. cm
+d:Ge/Foam/HLZ				= 3. cm
+d:Ge/Foam/TransX			= 0.0 cm # defaults to 0
+d:Ge/Foam/TransY			= 0.0 cm # defaults to 0
+d:Ge/Foam/TransZ			= 0.0 cm # defaults to 0
+d:Ge/Foam/RotX				= 0.0 deg # defaults to 0
+d:Ge/Foam/RotY				= 0.0 deg # defaults to 0
+d:Ge/Foam/RotZ				= 0.0 deg # defaults to 0
+s:Ge/Foam/Material 			= "Air"
+#b:Ge/Foam/Invisible 		= "True" 
+
+# Solid Water Under Plate
+s:Ge/SoWaUn/Parent			= "World"
+s:Ge/SoWaUn/Type			= "TsBox"
+d:Ge/SoWaUn/HLX				= 15. cm # Width
+d:Ge/SoWaUn/HLY				= 15. cm
+d:Ge/SoWaUn/HLZ				= 0.5 cm
+d:Ge/SoWaUn/TransX			= 0.0 cm # defaults to 0
+d:Ge/SoWaUn/TransY			= 0.0 cm # defaults to 0
+d:Ge/SoWaUn/TransZ			= -0.75 cm # defaults to 0
+d:Ge/SoWaUn/RotX			= 0.0 deg # defaults to 0
+d:Ge/SoWaUn/RotY			= 0.0 deg # defaults to 0
+d:Ge/SoWaUn/RotZ			= 0.0 deg # defaults to 0
+s:Ge/SoWaUn/Material		= "G4_WATER"
+s:Ge/SoWaUn/Color			= "Brown"
+#b:Ge/SoWaUn/Invisible 		= "True" 
+
+# Solid Water Above Plate
+s:Ge/SoWaAb/Parent			= "World"
+s:Ge/SoWaAb/Type			= "TsBox"
+d:Ge/SoWaAb/HLX				= 15. cm # Width
+d:Ge/SoWaAb/HLY				= 15. cm
+d:Ge/SoWaAb/HLZ				= 1. cm
+d:Ge/SoWaAb/TransX			= 0.0 cm # defaults to 0
+d:Ge/SoWaAb/TransY			= 0.0 cm # defaults to 0
+d:Ge/SoWaAb/TransZ			= 2.95 cm # defaults to 0
+d:Ge/SoWaAb/RotX			= 0.0 deg # defaults to 0
+d:Ge/SoWaAb/RotY			= 0.0 deg # defaults to 0
+d:Ge/SoWaAb/RotZ			= 0.0 deg # defaults to 0
+s:Ge/SoWaAb/Material		= "G4_WATER"
+s:Ge/SoWaAb/Color			= "Brown"
+
+
+
+## CULTURE PLATE 24 and WELL CONTENT
+includeFile = /home/mcbeam/Documents/TOPAS_sims/cells/plate24.txt
+
+
+##################################################################
+
+## MATERIALS
+# Treatment Table Carbon Fiber
+sv:Ma/Table/Components			= 1 "Carbon"
+uv:Ma/Table/Fractions			= 1 1.0
+d:Ma/Table/Density				= 1.2 g/cm3
+s:Ma/Table/DefaultColor			= "Gray"
+
+# AuNP medium
+b:Ma/AuNP_medium/BuildFromMaterials	= "True"
+sv:Ma/AuNP_medium/Components		= 2 "G4_WATER" "G4_Au"
+uv:Ma/AuNP_medium/Fractions			= 2 0.9777 0.0223
+d:Ma/AuNP_medium/Density			= 1.0223 g/cm3
+s:Ma/AuNP_medium/DefaultColor		= "Purple"
+
+##################################################################
+
+## SCORERS
+includeFile = /home/mcbeam/Documents/TOPAS_sims/cells/ScoreIn.txt #OnlyIncludeParticlesGoing = "In"
+#includeFile = /home/mcbeam/Documents/TOPAS_sims/cells/ScoreOut.txt #OnlyIncludeParticlesGoing = "Out"
+#includeFile = /home/mcbeam/Documents/TOPAS_sims/cells/ScoreAll.txt # Sum of the previus PhaseSpaces
+
+
+#VOLUME FOR SCORING RMax = 0.5 cm
+B3 Parallel Volume for scoring
+s:Ge/B3Parallel/Parent		= "B3Content"
+s:Ge/B3Parallel/Type		= "TsCylinder"
+d:Ge/B3Parallel/TransZ		= Ge/B3Parallel/HL - Ge/B3Content/HL cm
+d:Ge/B3Parallel/RMax		= 0.5 cm
+d:Ge/B3Parallel/HL			= 10 um
+b:Ge/B3Parallel/IsParallel	= "True"
+s:Ge/B3Parallel/Color = "red"
+b:Ge/B3Parallel/Invisible 		= "True" #default is False
+
+# C3 Parallel Volume for scoring
+s:Ge/C3Parallel/Parent		= "C3Content"
+s:Ge/C3Parallel/Type		= "TsCylinder"
+d:Ge/C3Parallel/TransZ		= Ge/C3Parallel/HL - Ge/C3Content/HL cm
+d:Ge/C3Parallel/RMax		= 0.5 cm
+d:Ge/C3Parallel/HL			= 10 um
+b:Ge/C3Parallel/IsParallel	= "True"
+s:Ge/C3Parallel/Color = "red"
+b:Ge/C3Parallel/Invisible 		= "True" #default is False
+
+# #VOLUME FOR SCORING RMax = 0.78 cm
+# # B3 Parallel Volume for scoring
+# s:Ge/B3ParallelContent/Parent		= "B3Content"
+# s:Ge/B3ParallelContent/Type			= "TsCylinder"
+# d:Ge/B3ParallelContent/TransZ		= Ge/B3Parallel/HL - Ge/B3Content/HL cm
+# d:Ge/B3ParallelContent/RMax			= 0.78 cm
+# d:Ge/B3ParallelContent/HL			= 10 um
+# b:Ge/B3ParallelContent/IsParallel	= "True"
+# s:Ge/B3ParallelContent/Color = "blue"
+# b:Ge/B3ParallelContent/Invisible 		= "True" #default is False
+
+# # C3 Parallel Volume for scoring
+# s:Ge/C3ParallelContent/Parent		= "C3Content"
+# s:Ge/C3ParallelContent/Type			= "TsCylinder"
+# d:Ge/C3ParallelContent/TransZ		= Ge/C3Parallel/HL - Ge/C3Content/HL cm
+# d:Ge/C3ParallelContent/RMax			= 0.78 cm
+# d:Ge/C3ParallelContent/HL			= 10 um
+# b:Ge/C3ParallelContent/IsParallel	= "True"
+# s:Ge/C3ParallelContent/Color = "blue"
+# b:Ge/C3ParallelContent/Invisible 		= "True" #default is False
+
+##################################################################
+## PHYSICS
+
+sv:Ph/Default/Modules				= 1 "g4em-livermore"
+d:Ph/Default/CutForAllParticles		= 100 nm # single range cut to use for all particles
+#d:Ph/Default/CutForGamma			= 0.05 mm # overrides CutForAllParticles for Gamma
+d:Ph/Default/CutForElectron 		= 50 nm # overrides CutForAllParticles for Electron
+#d:Ph/Default/CutForPositron 		= 0.05 mm # overrides CutForAllParticles for Positron
+#d:Ph/Default/CutForProton 			= 0.05 mm # overrides CutForAllParticles for Proton
+#d:Ph/Default/CutForAlpha			= 0.05 mm # overrides CutForAllParticles for Alpha
+#d:Ph/Default/CutForDeuteron			= 0.05 mm # overrides CutForAllParticles for Deuteron
+#d:Ph/Default/CutForTriton			= 0.05 mm # overrides CutForAllParticles for Triton
+d:Ph/Default/EMRangeMin				= 100. eV # minimum for EM tables. Set to 100. eV or greater when using standard Geant4 EM physics
+d:Ph/Default/EMRangeMax				= 500. MeV # maximum for EM tables
+i:Ph/Default/EMBins					= 77 # number of bins for EM tables
+i:Ph/Default/EMBinsPerDecade		= 7 # number of bins per decade for EM tables
+b:Ph/Default/Fluorescence			= "False" # Set to true to turn on Fluorescence
+b:Ph/Default/Auger					= "True" # Set to true to turn on Auger
+b:Ph/Default/AugerCascade			= "True" # Set to true to turn on AugerCascade
+b:Ph/Default/DeexcitationIgnoreCut	= "False" # Set to true to implement DeexcitationIgnoreCut
+b:Ph/Default/PIXE					= "False" # Set to true to turn on PIXE
