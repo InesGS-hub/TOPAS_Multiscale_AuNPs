@@ -31,7 +31,10 @@ The TOPAS files are:
       - PhaseSpaceStage3.txt
 ___________________________________________________________________________________________________________________
 Auxiliar Files:
-  - pruebaNanoOuro.txt (tunning of physics modules)
+  - pruebaNanoOuro.txt (tunning of physics modules - for explicit AuNPs CH is not the most apropriate physics module)
+
+   <img width="506" alt="image" src="https://github.com/InesGS-hub/TOPAS_Multiscale_AuNPs/assets/174004445/af0afb9e-111b-46ee-a17d-99e14eefd59c">
+ 
   - dividir_PHSP.py (python code to divide the PHSP from stage 2, in smaller PHSPs with 1000 histories)
   - TsDistributedComponents extension for stage 2 (position of AuNPs and geometry)
   - TsCellNucleus extension for stage 2 (geometry of cell without nucleus)
