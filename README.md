@@ -3,9 +3,9 @@
 This work is divided in 3 Stages: Macroscopic (irradiation); Microscopic (cell with AuNPs); and Microscopic (nucleus with DNA). The aim of this work is to study the dose enhancement effect and radiosensitization effect of AuNPs.
 
 Geometry setup for Stage 2 (cell geometry):
-
+<p align="center">
 <img width="776" alt="Captura de ecrã 2024-06-28, às 11 27 41" src="https://github.com/InesGS-hub/TOPAS_Multiscale_AuNPs/assets/174004445/80f3a521-4f94-4609-a9a6-7f6b478f0b0b">
-
+</p>
 ___________________________________________________________________________________________________________________
 The TOPAS files are: 
   - phase_1_macro.txt (main)
